@@ -8,9 +8,9 @@ from cachetools import cached, TTLCache
 class DividendRader:
 
     def __init__(self, dividend_radar_url, local_file):
-        self.latest_version_url = None
         self.dividend_radar_url = dividend_radar_url
         self.local_file = local_file
+        self.latest_version_url = None
         self.latest_version = None
         self.latest_local_version = None
 
@@ -23,10 +23,10 @@ class DividendRader:
         self.latest_version = self.latest_version_url[-15:-5]
 
     def check_if_local_is_latest(self):
-        pass
+        if self.latest_local_version == self.latest_version:
+            return True
+        else:
+            return False
 
     def download_latest_version(self):
         pass
-
-test = DividendRader("https://www.portfolio-insight.com/dividend-radar", "/tmp/test123.xlsx")
-test.find_latest_version()
