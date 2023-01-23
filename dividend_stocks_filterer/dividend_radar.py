@@ -29,4 +29,7 @@ class DividendRader:
             return False
 
     def download_latest_version(self):
-        pass
+        self.find_latest_version()
+        r = requests.get(self.latest_version_url)
+        open(self.local_file, 'wb').write(r.content)
+        self.latest_local_version = self.latest_version
