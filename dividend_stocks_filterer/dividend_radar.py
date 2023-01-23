@@ -30,6 +30,6 @@ class DividendRader:
 
     def download_latest_version(self):
         self.find_latest_version()
-        r = requests.get(self.latest_version_url)
-        open(self.local_file, 'wb').write(r.content)
+        latest_rader_file = requests.get(self.latest_version_url)
+        open(self.local_file, 'wb').write(latest_rader_file.content)
         self.latest_local_version = self.latest_version
