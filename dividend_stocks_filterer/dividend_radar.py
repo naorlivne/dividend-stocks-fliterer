@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-from dividend_stocks_filterer.configure import *
 from retrying import retry
 from cachetools import cached, TTLCache
 
