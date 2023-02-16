@@ -37,7 +37,7 @@ class DividendRader:
         Checks if the local dividend radar file version is the latest one
 
         Returns:
-            :return auth_required: True if latest, False otherwise (not latest or does not exist locally)
+            :return True if the local version is the latest version of the file available, False otherwise
         """
         try:
             self.find_latest_version()
