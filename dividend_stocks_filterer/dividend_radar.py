@@ -1,4 +1,5 @@
 import requests
+import openpyxl
 from bs4 import BeautifulSoup
 from retrying import retry
 from cachetools import cached, TTLCache
@@ -54,3 +55,17 @@ class DividendRadar:
         with open(self.local_file, 'wb') as f:
             f.write(latest_radar_file.content)
         self.latest_local_version = self.latest_version
+
+    def read_radar_file_to_dict(self) -> dict:
+        """
+
+        :return dividend_radar_dict: A dict of the relevant data from the file
+        """
+        radar_dict = {}
+        wb = openpyxl.load_workbook(self.local_file)
+        sheet = wb["All"]
+
+        for row in sheet.iter_rows(min_row=4):
+            for cell in row:
+                radar_dict[row[0].value] = {sheet.cell(row=3, column=cell.column).value: cell.value}
+        return radar_dict

@@ -27,3 +27,8 @@ class DividendRadarTests(TestCase):
     def test_download_latest_version(self):
         self.dividend_radar.download_latest_version()
         self.assertTrue(os.path.exists(self.local_file))
+
+    def test_read_radar_file_to_dict(self):
+        self.dividend_radar.download_latest_version()
+        test = self.dividend_radar.read_radar_file_to_dict()
+        print(test)
