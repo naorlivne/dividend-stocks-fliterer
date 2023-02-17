@@ -66,6 +66,7 @@ class DividendRadar:
         sheet = wb["All"]
 
         for row in sheet.iter_rows(min_row=4):
+            radar_dict[row[0].value] = {}
             for cell in row:
-                radar_dict[row[0].value] = {sheet.cell(row=3, column=cell.column).value: cell.value}
+                radar_dict[row[0].value][sheet.cell(row=3, column=cell.column).value] = cell.value
         return radar_dict
