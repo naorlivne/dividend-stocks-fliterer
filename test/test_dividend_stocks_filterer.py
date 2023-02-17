@@ -1,7 +1,7 @@
 import os
-import re
 from unittest import TestCase
 from dividend_stocks_filterer.dividend_radar import DividendRadar
+from datetime import datetime
 
 
 class DividendRadarTests(TestCase):
@@ -30,5 +30,17 @@ class DividendRadarTests(TestCase):
 
     def test_read_radar_file_to_dict(self):
         self.dividend_radar.download_latest_version()
-        test = self.dividend_radar.read_radar_file_to_dict()
-        print(test)
+        result = self.dividend_radar.read_radar_file_to_dict()
+
+        # Ensure return result is a dict
+        self.assertIsInstance(result, dict)
+
+        # Ensure the dictionary has at least one entry
+        self.assertGreater(len(result), 0)
+
+        # Check that the dictionary values are of the expected types
+        for key, value in result.items():
+            self.assertIsInstance(key, str)
+            self.assertIsInstance(value, dict)
+            for inner_key, inner_value in value.items():
+                self.assertIsInstance(inner_value, (datetime, str, int, float, type(None)))
