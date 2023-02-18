@@ -74,19 +74,19 @@ test_radar_dict = {
         None: 'Blended',
         'Streak Basis': 'Ex-date',
         'Chowder Number': 9,
-        'EPS 1Y': 80.25,
-        'Revenue 1Y': 28.27,
-        'NPM': 18.32,
-        'CF/Share': 4.39,
-        'ROE': 23.46,
-        'Current R': 2.04,
-        'Debt/Capital': 0.36,
-        'ROTC': 12.69,
-        'P/E': 32.99,
-        'P/BV': 7.71,
-        'PEG': 1.37,
+        'EPS 1Y': -2.57,
+        'Revenue 1Y': 2.44,
+        'NPM': 24.56,
+        'CF/Share': 6.79,
+        'ROE': 147.95,
+        'Current R': 0.94,
+        'Debt/Capital': 0.67,
+        'ROTC': 39.3,
+        'P/E': 21.97,
+        'P/BV': 36.29,
+        'PEG': 1.14,
         'New Member': None,
-        'Industry': 'Life Sciences Tools and Services'
+        'Industry': 'Technology Hardware, Storage and Peripherals'
     }
 }
 
