@@ -1,6 +1,6 @@
 import streamlit as st
 from dividend_radar import *
-from configure import  *
+from configure import *
 
 
 configuration = read_configurations()
