@@ -11,6 +11,7 @@ radar_file = DividendRadar(
 )
 if radar_file.check_if_local_is_latest() is False:
     radar_file.download_latest_version()
+    radar_dict = radar_file.read_radar_file_to_dict()
 
 st.title('divifilter')
-st.write("Radar file date: " + radar_file.latest_local_version)
+st.text("Radar file date: " + radar_file.latest_local_version)
