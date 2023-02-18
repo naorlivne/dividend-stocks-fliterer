@@ -20,6 +20,7 @@ def read_configurations(config_folder: str = "config") -> dict:
     config["dividend_radar_download_url"] = \
         parser.read_configuration_variable("dividend_radar_download_url",
                                            default_value="https://www.portfolio-insight.com/dividend-radar")
+    config["local_file_path"] = "/tmp/latest_dividend_radar.xlsx"
     config["basic_auth_user"] = parser.read_configuration_variable("basic_auth_user", default_value=None)
     config["basic_auth_password"] = parser.read_configuration_variable("basic_auth_password", default_value=None)
     config["auth_token"] = parser.read_configuration_variable("auth_token",  default_value=None)
