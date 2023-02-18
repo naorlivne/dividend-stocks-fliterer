@@ -34,11 +34,14 @@ with st.sidebar:
     radar_dict_filtered = filter_dividend_paid_years_in_row(radar_dict_filtered, min_streak_years)
 
     # exclude stocks by sector
-    excluded_sectors = st.multiselect(label='sector to exclude', key="excluded_sectors",
+    excluded_sectors = st.multiselect(label='Sector to exclude', key="excluded_sectors",
                                           options=list_values_of_key_in_radar_dict(radar_dict_filtered, "Sector"))
     radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_sectors, "Sector")
 
-# TODO - insert filter to exclude industry
+    # exclude stocks by industry
+    excluded_sectors = st.multiselect(label='Industry to exclude', key="excluded_industries",
+                                      options=list_values_of_key_in_radar_dict(radar_dict_filtered, "Industry"))
+    radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_sectors, "Industry")
 
 # TODO - insert filter with slider with min and max prices
 
@@ -71,5 +74,7 @@ with st.sidebar:
 # TODO - add current data where relevant (price?) from somewhere (yahoo finance?)
 
 # TODO - clean up table from meaningless columns
+
+# TODO - use session state so multiselect options will be kept even after their options get changed
 
 st.dataframe(radar_dict_to_table(radar_dict_filtered), use_container_width=True)
