@@ -23,11 +23,12 @@ st.text("Radar file date: " + radar_file.latest_local_version)
 radar_dict_filtered = starting_radar_dict
 
 with st.sidebar:
-    # TODO - insert filter to exclude tickers from the list
+    # exclude stocks by symbols
     excluded_symbols = st.multiselect(label='Stock symbols to exclude', key="excluded_symbols",
                                       options=list_symbols_in_radar_dict(radar_dict_filtered))
     radar_dict_filtered = filter_exclude_symbols(radar_dict_filtered, excluded_symbols)
 
+    # filter to only stocks with a dividend streak of over selected # of years
     min_streak_years = st.slider(label="Select minimum number of years of dividend streaks to display", min_value=5,
                                  max_value=50, value=18, key="min_dividend_streak_years")
     radar_dict_filtered = filter_dividend_paid_years_in_row(radar_dict_filtered, min_streak_years)
