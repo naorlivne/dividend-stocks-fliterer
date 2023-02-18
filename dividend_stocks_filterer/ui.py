@@ -21,10 +21,41 @@ st.text("Radar file date: " + radar_file.latest_local_version)
 
 radar_dict_filtered = starting_radar_dict
 
-# TODO - insert all needed filters here
 with st.sidebar:
     min_streak_years = st.slider(label="select minimum number of years of dividend streaks to display", min_value=5,
                                  max_value=50, value=18, key="min_dividend_streak_years")
     radar_dict_filtered = filter_dividend_paid_years_in_row(radar_dict_filtered, min_streak_years)
+
+# TODO - insert filter to exclude tickers from the list
+
+# TODO - insert filter to exclude sector
+
+# TODO - insert filter to exclude industry
+
+# TODO - insert filter with slider with min and max prices
+
+# TODO - insert filter with slider with min and max div yield, note it will filter only if both div & 5y avg yield
+
+# TODO - insert filter to filter with slider by DGR min only which will filter 1y, 3y, 5y & 10y DGR
+
+# TODO - insert filter to filter with slider by fair value by fv%
+
+# TODO - insert filter to with slider by chowder number
+
+# TODO - insert filter to with slider by EPS
+
+# TODO - insert filter to with slider by revenue 1y
+
+# TODO - insert filter to with slider by NPM
+
+# TODO - insert filter to with slider cf/share
+
+# TODO - insert filter to with slider by ROE
+
+# TODO - insert filter to with slider by p/bv
+
+# TODO - insert filter to with slider by PEG
+
+# TODO - insert toggles to enable/disable filters
 
 st.dataframe(radar_dict_to_table(radar_dict_filtered), use_container_width=True)
