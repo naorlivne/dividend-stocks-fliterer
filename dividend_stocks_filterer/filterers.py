@@ -14,17 +14,18 @@ def filter_dividend_paid_years_in_row(radar_dict: dict, min_years_in_row_paid: i
     return filtered_radar_dict
 
 
-def filter_exclude_symbols(radar_dict: dict, excluded_symobls_list: list) -> dict:
+def filter_exclude_values_of_key(radar_dict: dict, excluded_values: list, excluded_key: str) -> dict:
     """
     Takes a dict of the radar file and returns subset of it without those on the excluded list
 
     :param radar_dict: The dict of the data to work with
-    :param excluded_symobls_list: list of stock symbols to exclude
+    :param excluded_values: list of values to exclude
+    :param excluded_key: the key who value should be excluded
 
     :return filtered_radar_dict: The dict but in table/dataframe form
     """
     filtered_radar_dict = {}
     for key, value in radar_dict.items():
-        if value["Symbol"] not in excluded_symobls_list:
+        if value[excluded_key] not in excluded_values:
             filtered_radar_dict[key] = value
     return filtered_radar_dict

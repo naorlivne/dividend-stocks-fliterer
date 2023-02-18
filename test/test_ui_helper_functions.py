@@ -98,7 +98,8 @@ class TestReadConfigurations(unittest.TestCase):
         test_data_frame = radar_dict_to_table(test_radar_dict)
         self.assertIsInstance(test_data_frame, pd.DataFrame)
 
-    def test_radar_list_symbols_in_radar_dict(self):
-        test_symbols_list = list_symbols_in_radar_dict(test_radar_dict)
+    def test_radar_list_values_of_key_in_radar_dict(self):
+        test_symbols_list = list_values_of_key_in_radar_dict(test_radar_dict, "Symbol")
         self.assertIsInstance(test_symbols_list, list)
-        self.assertEqual(["A", "AAPL"], test_symbols_list)
+        self.assertIn("A", test_symbols_list)
+        self.assertIn("AAPL", test_symbols_list)
