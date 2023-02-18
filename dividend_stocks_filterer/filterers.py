@@ -9,6 +9,5 @@ def radar_dict_to_table(radar_dict: dict) -> pd.DataFrame:
 
     :return radar_df: The dict but in table/dataframe form
     """
-    #for k, v in radar_dict.items():
     radar_df = pd.DataFrame.from_dict(radar_dict, orient='index')
     return radar_df
