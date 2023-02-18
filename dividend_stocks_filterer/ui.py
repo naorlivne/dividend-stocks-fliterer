@@ -43,7 +43,12 @@ with st.sidebar:
                                       options=list_values_of_key_in_radar_dict(radar_dict_filtered, "Industry"))
     radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_sectors, "Industry")
 
-# TODO - insert filter with slider with min and max prices
+    # filter based on stock prices
+    max_stock_price_to_filter = max_price_of_any_stock(radar_dict_filtered)
+    price_range_min, price_range_max = st.slider(label="Select range of stock prices to filter by", min_value=1.0,
+                                                 max_value=max_stock_price_to_filter, key="stock_price_range",
+                                                 value=(1.0, max_stock_price_to_filter))
+    radar_dict_filtered = filter_dividend_price_in_range(radar_dict_filtered, price_range_min, price_range_max)
 
 # TODO - insert filter with slider with min and max div yield, note it will filter only if both div & 5y avg yield
 
