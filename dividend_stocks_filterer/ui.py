@@ -62,4 +62,6 @@ with st.sidebar:
 
 # TODO - add current data where relevant (price?) from somewhere (yahoo finance?)
 
+# TODO - clean up table from meaningless columns
+
 st.dataframe(radar_dict_to_table(radar_dict_filtered), use_container_width=True)
