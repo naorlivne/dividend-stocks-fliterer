@@ -25,7 +25,7 @@ radar_dict_filtered = starting_radar_dict
 with st.sidebar:
     # exclude stocks by symbols
     excluded_symbols = st.multiselect(label='Stock symbols to exclude', key="excluded_symbols",
-                                      options=list_values_of_key_in_radar_dict(radar_dict_filtered, "Symbol"))
+                                      options=list_values_of_key_in_radar_dict(starting_radar_dict, "Symbol"))
     radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_symbols, "Symbol")
 
     # filter to only stocks with a dividend streak of over selected # of years
@@ -35,16 +35,16 @@ with st.sidebar:
 
     # exclude stocks by sector
     excluded_sectors = st.multiselect(label='Sector to exclude', key="excluded_sectors",
-                                          options=list_values_of_key_in_radar_dict(radar_dict_filtered, "Sector"))
+                                      options=list_values_of_key_in_radar_dict(starting_radar_dict, "Sector"))
     radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_sectors, "Sector")
 
     # exclude stocks by industry
     excluded_sectors = st.multiselect(label='Industry to exclude', key="excluded_industries",
-                                      options=list_values_of_key_in_radar_dict(radar_dict_filtered, "Industry"))
+                                      options=list_values_of_key_in_radar_dict(starting_radar_dict, "Industry"))
     radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_sectors, "Industry")
 
     # filter based on stock prices
-    max_stock_price_to_filter = max_price_of_any_stock(radar_dict_filtered)
+    max_stock_price_to_filter = max_price_of_any_stock(starting_radar_dict)
     price_range_min, price_range_max = st.slider(label="Select range of stock prices to filter by", min_value=1.0,
                                                  max_value=max_stock_price_to_filter, key="stock_price_range",
                                                  value=(1.0, max_stock_price_to_filter))
@@ -79,7 +79,5 @@ with st.sidebar:
 # TODO - add current data where relevant (price?) from somewhere (yahoo finance?)
 
 # TODO - clean up table from meaningless columns
-
-# TODO - use session state so multiselect options will be kept even after their options get changed
 
 st.dataframe(radar_dict_to_table(radar_dict_filtered), use_container_width=True)
