@@ -58,4 +58,8 @@ with st.sidebar:
 
 # TODO - insert toggles to enable/disable filters
 
+# TODO - add payout ratio from somewhere else (yahoo finance?)
+
+# TODO - add current data where relvent (price?) from somehwere (yahoo finance?)
+
 st.dataframe(radar_dict_to_table(radar_dict_filtered), use_container_width=True)
