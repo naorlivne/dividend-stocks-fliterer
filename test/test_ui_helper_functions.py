@@ -1,5 +1,5 @@
 import unittest
-from dividend_stocks_filterer.filterers import *
+from dividend_stocks_filterer.helper_functions import *
 import datetime
 import pandas as pd
 
@@ -94,19 +94,11 @@ test_radar_dict = {
 
 class TestReadConfigurations(unittest.TestCase):
 
-    def testfilter_dividend_paid_years_in_row(self):
-        test_result = filter_dividend_paid_years_in_row(test_radar_dict, 10)
-        self.assertIsInstance(test_result, dict)
-        self.assertEqual(len(test_result), 2)
-        self.assertIn("A", test_result)
-        self.assertIn("AAPL", test_result)
-        test_result = filter_dividend_paid_years_in_row(test_radar_dict, 12)
-        self.assertIsInstance(test_result, dict)
-        self.assertEqual(len(test_result), 1)
-        self.assertIn("A", test_result)
-        self.assertNotIn("AAPL", test_result)
-        test_result = filter_dividend_paid_years_in_row(test_radar_dict, 13)
-        self.assertIsInstance(test_result, dict)
-        self.assertEqual(len(test_result), 1)
-        self.assertIn("A", test_result)
-        self.assertNotIn("AAPL", test_result)
+    def test_radar_dict_to_table_conversion(self):
+        test_data_frame = radar_dict_to_table(test_radar_dict)
+        self.assertIsInstance(test_data_frame, pd.DataFrame)
+
+    def test_radar_list_symbols_in_radar_dict(self):
+        test_symbols_list = list_symbols_in_radar_dict(test_radar_dict)
+        self.assertIsInstance(test_symbols_list, list)
+        self.assertEqual(["A", "AAPL"], test_symbols_list)
