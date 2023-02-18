@@ -3,13 +3,14 @@ from dividend_stocks_filterer.filterers import *
 import datetime
 import pandas as pd
 
+# Not real data - changing it based on need for tests
 test_radar_dict = {
     'A': {
         'Symbol': 'A',
         'Company': 'Agilent Technologies, Inc.',
         'FV': None,
         'Sector': 'Health Care',
-        'No Years': 11,
+        'No Years': 13,
         'Price': 148.28,
         'Div Yield': 0.61,
         '5Y Avg Yield': 0.68,
@@ -96,3 +97,20 @@ class TestReadConfigurations(unittest.TestCase):
     def test_radar_dict_to_table_conversion(self):
         test_data_frame = radar_dict_to_table(test_radar_dict)
         self.assertIsInstance(test_data_frame, pd.DataFrame)
+
+    def testfilter_dividend_paid_years_in_row(self):
+        test_result = filter_dividend_paid_years_in_row(test_radar_dict, 10)
+        self.assertIsInstance(test_result, dict)
+        self.assertEqual(len(test_result), 2)
+        self.assertIn("A", test_result)
+        self.assertIn("AAPL", test_result)
+        test_result = filter_dividend_paid_years_in_row(test_radar_dict, 12)
+        self.assertIsInstance(test_result, dict)
+        self.assertEqual(len(test_result), 1)
+        self.assertIn("A", test_result)
+        self.assertNotIn("AAPL", test_result)
+        test_result = filter_dividend_paid_years_in_row(test_radar_dict, 13)
+        self.assertIsInstance(test_result, dict)
+        self.assertEqual(len(test_result), 1)
+        self.assertIn("A", test_result)
+        self.assertNotIn("AAPL", test_result)
