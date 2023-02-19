@@ -16,7 +16,8 @@ if radar_file.check_if_local_is_latest() is False:
 
 starting_radar_dict = radar_file.read_radar_file_to_dict()
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", page_title="divifilter - easily filter dividends stocks",
+                   initial_sidebar_state="expanded")
 st.title('divifilter')
 st.text("Radar file date: " + radar_file.latest_local_version)
 
