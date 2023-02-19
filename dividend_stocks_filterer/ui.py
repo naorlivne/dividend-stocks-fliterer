@@ -58,7 +58,8 @@ with st.sidebar:
     yield_range_min, yield_range_max = st.slider(label="Select range of stock dividends yield to filter by",
                                                  max_value=max_stock_yield_to_filter_highest_value,
                                                  key="dividend_yield_range", min_value=0.0,
-                                                 value=(0.0, max_stock_yield_to_filter_highest_value))
+                                                 value=(0.0, max_stock_yield_to_filter_highest_value),
+                                                 help="this will filter both by Div Yield & by 5y Avg Yield")
     radar_dict_filtered = filter_dividend_key_in_range(radar_dict_filtered, yield_range_min, yield_range_max,
                                                        "Div Yield")
     radar_dict_filtered = filter_dividend_key_in_range(radar_dict_filtered, yield_range_min, yield_range_max,
