@@ -93,4 +93,6 @@ with st.sidebar:
 
 # TODO - clean up table from meaningless columns
 
+# TODO - add necessary legalese notice this is not recommendation and assume no responsibility and such
+
 st.dataframe(radar_dict_to_table(radar_dict_filtered), use_container_width=True)
