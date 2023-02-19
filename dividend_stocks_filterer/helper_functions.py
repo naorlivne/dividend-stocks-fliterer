@@ -28,14 +28,15 @@ def list_values_of_key_in_radar_dict(radar_dict: dict, requested_key: str) -> li
     return list(set(values_list))
 
 
-def max_price_of_any_stock(radar_dict: dict) -> float:
+def max_value_of_any_stock_key(radar_dict: dict, key: str) -> float:
     """
     Takes a dict of the radar file and returns the highest price of any stock in it
 
     :param radar_dict: The dict of the data to work with
+    :param key: The key of the stock to return the max value of
 
-    :return max_price_of_any_stock: the highest price of any stock in the dict
+    :return max_key_value: the highest value of any stock in the dict key
     """
-    price_list = list_values_of_key_in_radar_dict(radar_dict, "Price")
-    max_stock_price = max(price_list)
-    return float(max_stock_price)
+    value_list = list_values_of_key_in_radar_dict(radar_dict, key)
+    max_key_value = max(value_list)
+    return float(max_key_value)

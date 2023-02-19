@@ -31,18 +31,20 @@ def filter_exclude_values_of_key(radar_dict: dict, excluded_values: list, exclud
     return filtered_radar_dict
 
 
-def filter_dividend_price_in_range(radar_dict: dict, min_price_range: float, max_price_range: float) -> dict:
+def filter_dividend_key_in_range(radar_dict: dict, min_price_range: float, max_price_range: float, stocks_key: str) -> \
+        dict:
     """
     Takes a dict of the radar file and returns subset of it of only those that have paid over the given number of years
 
     :param radar_dict: The dict of the data to work with
-    :param min_price_range: the minimum price of stocks to show
-    :param max_price_range: the maximum price of stocks to show
+    :param min_price_range: the minimum value of stocks key to show
+    :param max_price_range: the maximum value of stocks key to show
+    :param stocks_key: the stock key to filter by
 
     :return filtered_radar_dict:  The subset dict
     """
     filtered_radar_dict = {}
     for key, value in radar_dict.items():
-        if min_price_range <= value["Price"] <= max_price_range:
+        if min_price_range <= value[stocks_key] <= max_price_range:
             filtered_radar_dict[key] = value
     return filtered_radar_dict

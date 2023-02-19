@@ -45,13 +45,24 @@ with st.sidebar:
     radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_sectors, "Industry")
 
     # filter based on stock prices
-    max_stock_price_to_filter = max_price_of_any_stock(starting_radar_dict)
+    max_stock_price_to_filter = max_value_of_any_stock_key(starting_radar_dict, "Price")
     price_range_min, price_range_max = st.slider(label="Select range of stock prices to filter by", min_value=1.0,
                                                  max_value=max_stock_price_to_filter, key="stock_price_range",
                                                  value=(1.0, max_stock_price_to_filter))
-    radar_dict_filtered = filter_dividend_price_in_range(radar_dict_filtered, price_range_min, price_range_max)
+    radar_dict_filtered = filter_dividend_key_in_range(radar_dict_filtered, price_range_min, price_range_max, "Price")
 
-# TODO - insert filter with slider with min and max div yield, note it will filter only if both div & 5y avg yield
+    # filter based on yield, both current & 5y avg
+    max_stock_yield_to_filter = max_value_of_any_stock_key(starting_radar_dict, "Div Yield")
+    max_stock_yield_to_filter_5y_avg = max_value_of_any_stock_key(starting_radar_dict, "5Y Avg Yield")
+    max_stock_yield_to_filter_highest_value = max([max_stock_yield_to_filter, max_stock_yield_to_filter_5y_avg])
+    yield_range_min, yield_range_max = st.slider(label="Select range of stock dividends yield to filter by",
+                                                 max_value=max_stock_yield_to_filter_highest_value,
+                                                 key="dividend_yield_range", min_value=0.0,
+                                                 value=(0.0, max_stock_yield_to_filter_highest_value))
+    radar_dict_filtered = filter_dividend_key_in_range(radar_dict_filtered, yield_range_min, yield_range_max,
+                                                       "Div Yield")
+    radar_dict_filtered = filter_dividend_key_in_range(radar_dict_filtered, yield_range_min, yield_range_max,
+                                                       "5Y Avg Yield")
 
 # TODO - insert filter to filter with slider by DGR min only which will filter 1y, 3y, 5y & 10y DGR
 
