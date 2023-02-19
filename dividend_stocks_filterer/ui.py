@@ -95,4 +95,20 @@ with st.sidebar:
 
 # TODO - add necessary legalese notice this is not recommendation and assume no responsibility and such
 
+# TODO - unit tests all full coverage
+
+# TODO - dockerize
+
+# TODO - run publicly open copy somewhere
+
+# TODO - full CI/CD based on github actions
+
+# TODO - readme
+
+# TODO - FoSS (change github of repo to public)
+
+# TODO - github tags
+
+# TODO - publicize & monitize somehow?
+
 st.dataframe(radar_dict_to_table(radar_dict_filtered), use_container_width=True)
