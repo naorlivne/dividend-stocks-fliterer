@@ -66,7 +66,18 @@ with st.sidebar:
     radar_dict_filtered = filter_dividend_key_in_range(radar_dict_filtered, yield_range_min, yield_range_max,
                                                        "5Y Avg Yield")
 
-# TODO - insert filter to filter with slider by DGR min only which will filter 1y, 3y, 5y & 10y DGR
+    # filter to only stocks with a DGR over the selected percentage% for 1,3,5 & 10 years
+    # TODO - finish this, figure out what to do in none cases & also make the min of the slider dynamic as it can be negative
+    #max_stock_yield_to_filter_1y_avg = max_value_of_any_stock_key(starting_radar_dict, "DGR 1Y")
+    #max_stock_yield_to_filter_3y_avg = max_value_of_any_stock_key(starting_radar_dict, "DGR 3Y")
+    #max_stock_yield_to_filter_5y_avg = max_value_of_any_stock_key(starting_radar_dict, "DGR 5Y")
+    #max_stock_yield_to_filter_10y_avg = max_value_of_any_stock_key(starting_radar_dict, "DGR 10Y")
+    #max_stock_yield_to_filter_highest_value = max([max_stock_yield_to_filter_1y_avg, max_stock_yield_to_filter_3y_avg,
+    #                                               max_stock_yield_to_filter_5y_avg, max_stock_yield_to_filter_10y_avg])
+    #min_dgr = st.slider(label="Select minimum DGR to display", min_value=-100, key="min_dgr",
+    #                    help="this will filter the DGR % of 1,3,5 & 10 years (where applicable")
+    #radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_dgr, "DGR 1Y",
+    #                                                              "over")
 
 # TODO - insert filter to filter with slider by fair value by fv%
 
