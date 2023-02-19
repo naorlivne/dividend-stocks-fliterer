@@ -1,16 +1,26 @@
-def filter_dividend_paid_years_in_row(radar_dict: dict, min_years_in_row_paid: int) -> dict:
+def filter_dividend_key_over_or_under_value(radar_dict: dict, value_to_filter: int, key_to_filter: str,
+                                            over_or_under: str) -> dict:
     """
-    Takes a dict of the radar file and returns subset of it of only those that have paid over the given number of years
+    Takes a dict of the key and returns all values over or under the specific value
 
     :param radar_dict: The dict of the data to work with
-    :param min_years_in_row_paid: the minimum number of years to have paid dividends in a row
+    :param value_to_filter: the value to use as the base to work from
+    :param key_to_filter: the key to use as the base to work from
+    :param over_or_under: valid values are "over" for everything bigger or equal to value or "under" for everything
+    equal or smaller then value
 
     :return filtered_radar_dict: The subset dict
     """
     filtered_radar_dict = {}
     for key, value in radar_dict.items():
-        if value["No Years"] >= min_years_in_row_paid:
-            filtered_radar_dict[key] = value
+        if over_or_under == "over":
+            if value[key_to_filter] >= value_to_filter:
+                filtered_radar_dict[key] = value
+        elif over_or_under == "under":
+            if value[key_to_filter] <= value_to_filter:
+                filtered_radar_dict[key] = value
+        else:
+            raise ValueError
     return filtered_radar_dict
 
 

@@ -95,17 +95,17 @@ test_radar_dict = {
 class TestReadConfigurations(unittest.TestCase):
 
     def testfilter_dividend_paid_years_in_row(self):
-        test_result = filter_dividend_paid_years_in_row(test_radar_dict, 10)
+        test_result = filter_dividend_key_over_or_under_value(test_radar_dict, 10, "No Years", "over")
         self.assertIsInstance(test_result, dict)
         self.assertEqual(len(test_result), 2)
         self.assertIn("A", test_result)
         self.assertIn("AAPL", test_result)
-        test_result = filter_dividend_paid_years_in_row(test_radar_dict, 12)
+        test_result = filter_dividend_key_over_or_under_value(test_radar_dict, 12, "No Years", "over")
         self.assertIsInstance(test_result, dict)
         self.assertEqual(len(test_result), 1)
         self.assertIn("A", test_result)
         self.assertNotIn("AAPL", test_result)
-        test_result = filter_dividend_paid_years_in_row(test_radar_dict, 13)
+        test_result = filter_dividend_key_over_or_under_value(test_radar_dict, 13, "No Years", "over")
         self.assertIsInstance(test_result, dict)
         self.assertEqual(len(test_result), 1)
         self.assertIn("A", test_result)

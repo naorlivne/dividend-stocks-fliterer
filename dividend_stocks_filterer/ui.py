@@ -32,7 +32,8 @@ with st.sidebar:
     # filter to only stocks with a dividend streak of over selected # of years
     min_streak_years = st.slider(label="Select minimum number of years of dividend streaks to display", min_value=5,
                                  max_value=50, value=18, key="min_dividend_streak_years")
-    radar_dict_filtered = filter_dividend_paid_years_in_row(radar_dict_filtered, min_streak_years)
+    radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_streak_years, "No Years",
+                                                                  "over")
 
     # exclude stocks by sector
     excluded_sectors = st.multiselect(label='Sector to exclude', key="excluded_sectors",
