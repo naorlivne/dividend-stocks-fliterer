@@ -87,9 +87,9 @@ with st.sidebar:
 
 # TODO - insert toggles to enable/disable filters
 
-# TODO - add payout ratio from somewhere else (yahoo finance?)
+# TODO - add payout ratio from somewhere else (yahoo finance? finviz?)
 
-# TODO - add current data where relevant (price?) from somewhere (yahoo finance?)
+# TODO - add current data where relevant (price?) from somewhere (yahoo finance? finviz?)
 
 # TODO - clean up table from meaningless columns
 
