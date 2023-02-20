@@ -28,15 +28,23 @@ def list_values_of_key_in_radar_dict(radar_dict: dict, requested_key: str) -> li
     return list(set(values_list))
 
 
-def max_value_of_any_stock_key(radar_dict: dict, key: str) -> float:
+def min_max_value_of_any_stock_key(radar_dict: dict, key: str, min_or_max: str) -> float:
     """
-    Takes a dict of the radar file and returns the highest price of any stock in it
+    Takes a dict of the radar file and returns the highest/lowest price of any stock in it, ignores None values
 
     :param radar_dict: The dict of the data to work with
-    :param key: The key of the stock to return the max value of
+    :param key: The key of the stock to return the max/min value of
+    :param min_or_max: if to return min or max
 
-    :return max_key_value: the highest value of any stock in the dict key
+    :return min_max_key_value: the highest/lowest value of any stock in the dict key
+
+    :raise ValueError: if min_or_max isn't min or max which are it's only allowed values
     """
     value_list = list_values_of_key_in_radar_dict(radar_dict, key)
-    max_key_value = max(value_list)
-    return float(max_key_value)
+    if min_or_max == "max":
+        min_max_key_value = max(x for x in value_list if x is not None)
+    elif min_or_max == "min":
+        min_max_key_value = min(x for x in value_list if x is not None)
+    else:
+        raise ValueError
+    return float(min_max_key_value)

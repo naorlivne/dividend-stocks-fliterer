@@ -10,17 +10,22 @@ def filter_dividend_key_over_or_under_value(radar_dict: dict, value_to_filter: i
     equal or smaller then value
 
     :return filtered_radar_dict: The subset dict
+
+    :raise ValueError: if over_or_under isn't over or under which are it's only allowed values
     """
     filtered_radar_dict = {}
     for key, value in radar_dict.items():
-        if over_or_under == "over":
-            if value[key_to_filter] >= value_to_filter:
-                filtered_radar_dict[key] = value
-        elif over_or_under == "under":
-            if value[key_to_filter] <= value_to_filter:
-                filtered_radar_dict[key] = value
+        if value[key_to_filter] is None:
+            filtered_radar_dict[key] = value
         else:
-            raise ValueError
+            if over_or_under == "over":
+                if value[key_to_filter] >= value_to_filter:
+                    filtered_radar_dict[key] = value
+            elif over_or_under == "under":
+                if value[key_to_filter] <= value_to_filter:
+                    filtered_radar_dict[key] = value
+            else:
+                raise ValueError
     return filtered_radar_dict
 
 
