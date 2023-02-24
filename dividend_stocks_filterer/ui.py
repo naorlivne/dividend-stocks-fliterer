@@ -135,8 +135,6 @@ with st.sidebar:
 
 # TODO - add current data where relevant (price?) from somewhere (yahoo finance? finviz?)
 
-# TODO - add necessary legalese notice this is not recommendation and assume no responsibility and such
-
 # TODO - unit tests all full coverage
 
 # TODO - streamlit default configs
@@ -154,3 +152,16 @@ with st.sidebar:
 # TODO - publicize & monitize somehow?
 
 st.dataframe(radar_dict_to_table(radar_dict_filtered), use_container_width=True)
+
+st.info("""
+The information provided by divifilter is for informational purposes only and should not be considered as financial 
+advice. The information provided by divifilter is not intended to provide investment advice or recommendations. Users 
+are solely responsible for their own investment decisions.
+
+Divifilter is not affiliated with any financial institution or investment company. The accuracy of the data provided 
+by divifilter cannot be guaranteed and is subject to change without notice.
+
+By using divifilter you acknowledge that you have read and understand this legal notification. You agree to use the 
+information provided by divifilter at your own risk and agree to hold harmless the creators of divifilter from any and 
+all claims or damages arising from your use of divifilter.
+""", icon="ℹ️")
