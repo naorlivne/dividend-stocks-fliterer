@@ -117,7 +117,12 @@ with st.sidebar:
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, chowder_number, "Chowder Number",
                                                                   "over")
 
-# TODO - insert filter to with slider by EPS
+    # filter to only stocks with a EPS over the selected value
+    max_eps_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "EPS 1Y", "max")
+    min_eps_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "EPS 1Y", "min")
+    min_eps = st.slider(min_value=min_eps_to_filter_1y_avg, key="min_eps_number", value=0.0,
+                        max_value=max_eps_to_filter_1y_avg, label="Select minimum EPS over 1 year to display")
+    radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_eps, "EPS 1Y", "over")
 
 # TODO - insert filter to with slider by revenue 1y
 
