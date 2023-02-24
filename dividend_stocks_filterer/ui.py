@@ -151,7 +151,7 @@ with st.sidebar:
 
 # TODO - FoSS (change github of repo to public)
 
-# TODO - github tags
+# TODO - github link to website
 
 # TODO - publicize & monitize somehow?
 
