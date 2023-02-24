@@ -127,6 +127,8 @@ with st.sidebar:
 
 # TODO - insert filter to with slider by PEG
 
+# TODO - insert filter to with slider by Debt/Capital
+
 # TODO - insert toggles to enable/disable filters
 
 # TODO - add payout ratio from somewhere else (yahoo finance? finviz?)
