@@ -10,6 +10,10 @@ configuration = read_configurations()
 st.set_page_config(layout="wide", page_title="divifilter - easily filter dividends stocks")
 hide_streamlit_style = """
 <style>
+.block-container {
+                    margin-top: -60px;
+                    padding-bottom: 0rem;
+                }
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 </style>
