@@ -7,15 +7,6 @@ from helper_functions import *
 
 configuration = read_configurations()
 
-radar_file = DividendRadar(
-    dividend_radar_url=configuration["dividend_radar_download_url"],
-    local_file=configuration["local_file_path"]
-)
-if radar_file.check_if_local_is_latest() is False:
-    radar_file.download_latest_version()
-
-starting_radar_dict = radar_file.read_radar_file_to_dict()
-
 st.set_page_config(layout="wide", page_title="divifilter - easily filter dividends stocks")
 hide_streamlit_style = """
 <style>
@@ -24,6 +15,15 @@ footer {visibility: hidden;}
 </style>
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+radar_file = DividendRadar(
+    dividend_radar_url=configuration["dividend_radar_download_url"],
+    local_file=configuration["local_file_path"]
+)
+if radar_file.check_if_local_is_latest() is False:
+    radar_file.download_latest_version()
+
+starting_radar_dict = radar_file.read_radar_file_to_dict()
 
 st.title('divifilter')
 st.text("Radar file date: " + radar_file.latest_local_version)
