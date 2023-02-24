@@ -149,8 +149,6 @@ with st.sidebar:
 
 # TODO - readme
 
-# TODO - FoSS (change github of repo to public)
-
 # TODO - github link to website
 
 # TODO - publicize & monitize somehow?
