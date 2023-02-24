@@ -81,14 +81,20 @@ with st.sidebar:
                                                    min_stock_yield_to_filter_5y_avg, min_stock_yield_to_filter_10y_avg])
     min_dgr = st.slider(min_value=max(min_stock_yield_to_filter_highest_value, -25.0),
                         max_value=min(max_stock_yield_to_filter_highest_value, 25.0),
-                        key="min_dgr", value=0.0, label="Select minimum DGR to display",
+                        key="min_dgr", value=0.0, label="Select minimum DGR % to display",
                         help="this will filter the DGR % of 1,3,5 & 10 years (where applicable)")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_dgr, "DGR 1Y", "over")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_dgr, "DGR 3Y", "over")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_dgr, "DGR 5Y", "over")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_dgr, "DGR 10Y", "over")
 
-# TODO - insert filter to filter with slider by fair value by fv%
+    # filter to only stocks with a fair value under the selected percentage
+    max_fair_value_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "FV %", "max")
+    min_fair_value_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "FV %", "min")
+    fair_value = st.slider(min_value=int(max(min_fair_value_to_filter_1y_avg, -25.0)),
+                           max_value=int(max(max_fair_value_to_filter_1y_avg, 0.0)),
+                           key="max_fair_value", value=0, label="Select maximum fair value % to display")
+    radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, fair_value, "FV %", "under")
 
 # TODO - insert filter to with slider by chowder number
 
