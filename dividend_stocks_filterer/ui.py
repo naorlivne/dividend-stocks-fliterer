@@ -24,6 +24,7 @@ footer {visibility: hidden;}
 </style>
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 st.title('divifilter')
 st.text("Radar file date: " + radar_file.latest_local_version)
 
