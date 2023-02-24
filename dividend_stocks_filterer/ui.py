@@ -103,7 +103,12 @@ with st.sidebar:
                            key="max_fair_value", value=0, label="Select maximum fair value % to display")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, fair_value, "FV %", "under")
 
-# TODO - insert filter to with slider by chowder number
+    # filter to only stocks with a chowder number over the selected value
+    max_fair_value_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "Chowder Number", "max")
+    chowder_number = st.slider(min_value=0, max_value=int(min(max_fair_value_to_filter_1y_avg, 25.0)),
+                           key="min_chowder_number", value=0, label="Select minimum chowder number to display")
+    radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, chowder_number, "Chowder Number",
+                                                                  "over")
 
 # TODO - insert filter to with slider by EPS
 
