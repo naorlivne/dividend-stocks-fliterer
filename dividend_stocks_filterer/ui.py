@@ -30,6 +30,9 @@ st.text("Radar file date: " + radar_file.latest_local_version)
 
 radar_dict_filtered = starting_radar_dict
 
+unneeded_columns = ["FV", "None", None, "Current R", "New Member"]
+radar_dict_filtered = remove_unneeded_columns(radar_dict_filtered, unneeded_columns)
+
 with st.sidebar:
     # exclude stocks by symbols
     excluded_symbols = st.multiselect(label='Stock symbols to exclude', key="excluded_symbols",
@@ -129,8 +132,6 @@ with st.sidebar:
 # TODO - add payout ratio from somewhere else (yahoo finance? finviz?)
 
 # TODO - add current data where relevant (price?) from somewhere (yahoo finance? finviz?)
-
-# TODO - clean up table from meaningless columns
 
 # TODO - add necessary legalese notice this is not recommendation and assume no responsibility and such
 
