@@ -146,8 +146,6 @@ with st.sidebar:
 
 # TODO - unit tests all full coverage
 
-# TODO - dockerize
-
 # TODO - run publicly open copy somewhere
 
 # TODO - full CI/CD based on github actions
