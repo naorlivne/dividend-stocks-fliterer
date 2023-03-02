@@ -146,8 +146,6 @@ with st.sidebar:
 
 # TODO - unit tests all full coverage
 
-# TODO - streamlit default configs
-
 # TODO - dockerize
 
 # TODO - run publicly open copy somewhere
