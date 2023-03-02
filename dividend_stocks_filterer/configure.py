@@ -21,27 +21,4 @@ def read_configurations(config_folder: str = "config") -> dict:
         parser.read_configuration_variable("dividend_radar_download_url",
                                            default_value="https://www.portfolio-insight.com/dividend-radar")
     config["local_file_path"] = "/tmp/latest_dividend_radar.xlsx"
-    config["basic_auth_user"] = parser.read_configuration_variable("basic_auth_user", default_value=None)
-    config["basic_auth_password"] = parser.read_configuration_variable("basic_auth_password", default_value=None)
-    config["auth_token"] = parser.read_configuration_variable("auth_token",  default_value=None)
-    config["auth_enabled"] = auth_enabled(config["basic_auth_user"], config["basic_auth_password"],
-                                          config["auth_token"])
     return config
-
-
-def auth_enabled(username: Optional[str], password: Optional[str], token: Optional[str]) -> bool:
-    """
-    Checks if auth is enabled by making sure if there is a username & password pair or a token configured
-
-    Arguments:
-        :param username: the possible username for authentication
-        :param password: the possible password for authentication
-        :param token: the possible token for authentication
-
-    Returns:
-        :return auth_required: True if auth is enabled, False otherwise
-    """
-    if token is None and (username is None or password is None):
-        return False
-    else:
-        return True
