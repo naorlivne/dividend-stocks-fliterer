@@ -9,10 +9,10 @@ jobs:
   testing_job:
 
     runs-on: ubuntu-latest
-    container: python:${{ matrix.python-version }}
     strategy:
       matrix:
         python-version: [ "3.9", "3.10", "3.11" ]
+    container: python:${{ matrix.python-version }}
     steps:
       - uses: actions/checkout@v3
       - name: Install dependencies
@@ -29,4 +29,4 @@ jobs:
       - name: Test with pytest
         run: |
           coverage run -m unittest
-          codecov  -t ${CODECOV_TOKEN}
+          codecov  -t  ${{ secrets.CODECOV_TOKEN }}
