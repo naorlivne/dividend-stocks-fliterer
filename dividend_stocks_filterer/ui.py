@@ -148,7 +148,7 @@ with st.sidebar:
 
 # TODO - run publicly open copy somewhere
 
-# TODO - full CI/CD based on github actions
+# TODO - full CI/CD based on github actions - only deploying to whatever (northflank?) remains
 
 # TODO - readme
 
