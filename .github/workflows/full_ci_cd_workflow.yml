@@ -77,4 +77,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: naorlivne/${{ github.event.repository.name }}:v${{ vars.GITHUB_RUN_NUMBER }}
+          tags: naorlivne/${{ github.event.repository.name }}:v${{ github.run_id }}
