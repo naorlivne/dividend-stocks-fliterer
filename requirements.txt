@@ -58,4 +58,4 @@ urllib3==1.26.14
 validators==0.20.0
 watchdog==2.3.1
 xmltodict==0.13.0
-zipp==3.14.0
+zipp==3.15.0
