@@ -7,7 +7,7 @@ from helper_functions import *
 
 configuration = read_configurations()
 
-st.set_page_config(layout="wide", page_title="divifilter - easily filter dividends stocks")
+st.set_page_config(layout="wide", page_title="Divifilter - easily filter dividends stocks")
 hide_streamlit_style = """
 <style>
 .block-container {
@@ -29,7 +29,7 @@ if radar_file.check_if_local_is_latest() is False:
 
 starting_radar_dict = radar_file.read_radar_file_to_dict()
 
-st.title('divifilter')
+st.title('Divifilter')
 st.text("Radar file date: " + radar_file.latest_local_version)
 
 radar_dict_filtered = starting_radar_dict
@@ -154,21 +154,21 @@ with st.sidebar:
 
 # TODO - github link to website
 
-# TODO - publicize & monitize somehow?
+# TODO - publicize & monetize somehow?
 
 # TODO - https://tree-nation.com/offset-website
 
 st.dataframe(radar_dict_to_table(radar_dict_filtered), use_container_width=True)
 
 st.info("""
-The information provided by divifilter is for informational purposes only and should not be considered as financial 
-advice. The information provided by divifilter is not intended to provide investment advice or recommendations. Users 
+The information provided by Divifilter is for informational purposes only and should not be considered as financial 
+advice. The information provided by Divifilter is not intended to provide investment advice or recommendations. Users 
 are solely responsible for their own investment decisions.
 
 Divifilter is not affiliated with any financial institution or investment company. The accuracy of the data provided 
-by divifilter cannot be guaranteed and is subject to change without notice.
+by Divifilter cannot be guaranteed and is subject to change without notice.
 
-By using divifilter you acknowledge that you have read and understand this legal notification. You agree to use the 
-information provided by divifilter at your own risk and agree to hold harmless the creators of divifilter from any and 
-all claims or damages arising from your use of divifilter.
+By using Divifilter you acknowledge that you have read and understand this legal notification. You agree to use the 
+information provided by Divifilter at your own risk and agree to hold harmless the creators of Divifilter from any and 
+all claims or damages arising from your use of Divifilter.
 """, icon="ℹ️")
