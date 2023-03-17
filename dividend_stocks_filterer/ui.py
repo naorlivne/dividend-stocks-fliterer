@@ -145,7 +145,8 @@ with st.sidebar:
     max_cf_per_share_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "CF/Share", "max")
     min_cf_per_share_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "CF/Share", "min")
     min_cf_per_share = st.slider(min_value=min_cf_per_share_to_filter_1y_avg, key="min_cf_per_share_number", value=0.0,
-                                 max_value=max_cf_per_share_to_filter_1y_avg, label="Select minimum cf/share to display")
+                                 max_value=max_cf_per_share_to_filter_1y_avg,
+                                 label="Select minimum cf/share to display")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_cf_per_share, "CF/Share",
                                                                   "over")
 
