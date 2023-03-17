@@ -175,7 +175,7 @@ with st.sidebar:
 
 # TODO - insert toggles to enable/disable filters
 
-# TODO - add payout ratio from somewhere else (yahoo finance? finviz?)
+# TODO - add payout ratio and PEG from somewhere else (yahoo finance? finviz?)
 
 # TODO - add current data where relevant (price?) from somewhere (yahoo finance? finviz?)
 
