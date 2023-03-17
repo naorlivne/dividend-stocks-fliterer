@@ -181,6 +181,8 @@ with st.sidebar:
 
 # TODO - https://tree-nation.com/offset-website
 
+# TODO - add help field for every slider/selector/etc which explains what it is for
+
 st.dataframe(radar_dict_to_table(radar_dict_filtered), use_container_width=True)
 
 st.info("""
