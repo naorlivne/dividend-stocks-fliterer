@@ -34,7 +34,7 @@ st.text("Radar file date: " + radar_file.latest_local_version)
 
 radar_dict_filtered = starting_radar_dict
 
-unneeded_columns = ["FV", "None", None, "Current R", "New Member"]
+unneeded_columns = ["FV", "None", None, "Current R", "New Member", "PEG"]
 radar_dict_filtered = remove_unneeded_columns(radar_dict_filtered, unneeded_columns)
 
 with st.sidebar:
@@ -134,32 +134,44 @@ with st.sidebar:
                                                                   "over")
 
     # filter to only stocks with a NPM percentage over the selected value
-    max_npm_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "NPM", "max")
-    min_npm_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "NPM", "min")
-    min_npm = st.slider(min_value=min_npm_to_filter_1y_avg, key="min_npm_number", value=0.0,
-                        max_value=max_npm_to_filter_1y_avg, label="Select minimum NPM % to display")
+    max_npm_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "NPM", "max")
+    min_npm_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "NPM", "min")
+    min_npm = st.slider(min_value=min_npm_to_filter, key="min_npm_number", value=0.0,
+                        max_value=max_npm_to_filter, label="Select minimum NPM % to display")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_npm, "NPM", "over")
 
     # filter to only stocks with a cf/share over the selected value
-    max_cf_per_share_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "CF/Share", "max")
-    min_cf_per_share_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "CF/Share", "min")
-    min_cf_per_share = st.slider(min_value=min_cf_per_share_to_filter_1y_avg, key="min_cf_per_share_number", value=0.0,
-                                 max_value=max_cf_per_share_to_filter_1y_avg,
-                                 label="Select minimum cf/share to display")
+    max_cf_per_share_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "CF/Share", "max")
+    min_cf_per_share_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "CF/Share", "min")
+    min_cf_per_share = st.slider(min_value=min_cf_per_share_to_filter, key="min_cf_per_share_number", value=0.0,
+                                 max_value=max_cf_per_share_to_filter, label="Select minimum cf/share to display")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_cf_per_share, "CF/Share",
                                                                   "over")
     # filter to only stocks with a ROE over the selected value
-    max_roe_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "ROE", "max")
-    min_roe_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "ROE", "min")
-    min_roe = st.slider(min_value=min_roe_to_filter_1y_avg, key="min_roe_number", value=0.0,
-                        max_value=max_roe_to_filter_1y_avg, label="Select minimum ROE to display")
+    max_roe_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "ROE", "max")
+    min_roe_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "ROE", "min")
+    min_roe = st.slider(min_value=min_roe_to_filter, key="min_roe_number", value=0.0,
+                        max_value=max_roe_to_filter, label="Select minimum ROE to display")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_roe, "ROE", "over")
 
-# TODO - insert filter to with slider by p/bv
+    # filter to only stocks with a p/bv under the selected value
+    max_price_per_book_value_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "P/BV", "max")
+    min_price_per_book_value_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "P/BV", "min")
+    max_price_per_book_value = st.slider(min_value=min_price_per_book_value_to_filter,
+                                         key="max_price_per_book_value_number",
+                                         value=max_price_per_book_value_to_filter,
+                                         max_value=max_price_per_book_value_to_filter,
+                                         label="Select maximum P/BV to display")
+    radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, max_price_per_book_value, "P/BV",
+                                                                  "under")
 
-# TODO - insert filter to with slider by PEG
-
-# TODO - insert filter to with slider by Debt/Capital
+    # filter to only stocks with a Debt/Capital under the selected value
+    max_debt_per_capital_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "Debt/Capital", "max")
+    max_debt_per_capital_value = st.slider(min_value=0.0, key="max_debt_per_capital_value",
+                                           value=0.5, max_value=min(5.0, max_debt_per_capital_to_filter),
+                                           label="Select maximum Debt/Capital to display")
+    radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, max_debt_per_capital_value,
+                                                                  "Debt/Capital", "under")
 
 # TODO - insert toggles to enable/disable filters
 
