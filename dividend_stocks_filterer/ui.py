@@ -141,6 +141,13 @@ with st.sidebar:
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_npm, "NPM", "over")
 
 # TODO - insert filter to with slider cf/share
+    # filter to only stocks with a NPM percentage over the selected value
+    max_cf_per_share_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "CF/Share", "max")
+    min_cf_per_share_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "CF/Share", "min")
+    min_cf_per_share = st.slider(min_value=min_cf_per_share_to_filter_1y_avg, key="min_cf_per_share_number", value=0.0,
+                                 max_value=max_cf_per_share_to_filter_1y_avg, label="Select minimum cf/share to display")
+    radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_cf_per_share, "CF/Share",
+                                                                  "over")
 
 # TODO - insert filter to with slider by ROE
 
