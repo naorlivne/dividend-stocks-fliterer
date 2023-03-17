@@ -124,6 +124,7 @@ with st.sidebar:
                         max_value=max_eps_to_filter_1y_avg, label="Select minimum EPS over 1 year to display")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_eps, "EPS 1Y", "over")
 
+    # filter to only stocks with a revenue over 1y over the selected value
     max_revenue_1y_avg_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "Revenue 1Y", "max")
     min_revenue_1y_avg_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "Revenue 1Y", "min")
     min_revenue = st.slider(min_value=min_revenue_1y_avg_to_filter_1y_avg, key="min_revenue_1y_avg", value=0.0,
@@ -132,7 +133,12 @@ with st.sidebar:
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_revenue, "Revenue 1Y",
                                                                   "over")
 
-# TODO - insert filter to with slider by NPM
+    # filter to only stocks with a NPM percentage over the selected value
+    max_npm_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "NPM", "max")
+    min_npm_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "NPM", "min")
+    min_npm = st.slider(min_value=min_npm_to_filter_1y_avg, key="min_npm_number", value=0.0,
+                        max_value=max_npm_to_filter_1y_avg, label="Select minimum NPM % to display")
+    radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_npm, "NPM", "over")
 
 # TODO - insert filter to with slider cf/share
 
