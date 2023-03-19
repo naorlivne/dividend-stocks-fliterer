@@ -58,7 +58,7 @@ class DividendRadar:
             f.write(latest_radar_file.content)
         self.latest_local_version = self.latest_version
 
-    @cached(cache=TTLCache(maxsize=1024, ttl=60))
+    @cached(cache=TTLCache(maxsize=1024, ttl=600))
     def read_radar_file_to_dict(self) -> dict:
         """
 
