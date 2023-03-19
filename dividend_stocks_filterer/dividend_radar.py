@@ -21,15 +21,18 @@ class DividendRadar:
 
     @cached(cache=TTLCache(maxsize=1024, ttl=3600))
     @retry(wait_exponential_multiplier=2500, wait_exponential_max=10000, stop_max_attempt_number=10)
-    def find_latest_version(self) -> None:
+    def find_latest_version(self) -> str:
         """
         Finds the latest version of the dividend radar xlsx file, note I'm wrapping this with retries to avoid network
         glitches and then caching the result as a quick way to avoid spamming the site
+
+        :return: the latest version of the file
         """
         page = requests.get(self.dividend_radar_url)
         soup = BeautifulSoup(page.content, "html.parser")
         self.latest_version_url = soup.find(class_="link-block w-inline-block").attrs['href']
         self.latest_version = self.latest_version_url[-15:-5]
+        return self.latest_version
 
     def check_if_local_is_latest(self) -> bool:
         """
@@ -38,8 +41,7 @@ class DividendRadar:
         :return: True if the local version is the latest version of the file available, False otherwise
         """
         try:
-            self.find_latest_version()
-            if self.latest_local_version == self.latest_version:
+            if self.latest_local_version == self.find_latest_version():
                 return True
             else:
                 return False

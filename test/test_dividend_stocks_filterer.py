@@ -15,9 +15,11 @@ class DividendRadarTests(TestCase):
             os.remove(self.local_file)
 
     def test_find_latest_version(self):
-        self.dividend_radar.find_latest_version()
+        result = self.dividend_radar.find_latest_version()
         date_regex = r"\d{4}-\d{2}-\d{2}"
         self.assertRegex(self.dividend_radar.latest_version, date_regex)
+        self.assertRegex(result, date_regex)
+        self.assertEqual(self.dividend_radar.latest_version, result)
 
     def test_check_if_local_is_latest(self):
         self.assertFalse(self.dividend_radar.check_if_local_is_latest())
