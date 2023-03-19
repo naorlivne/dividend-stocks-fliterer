@@ -183,8 +183,6 @@ with st.sidebar:
 
 # TODO - run publicly open copy somewhere
 
-# TODO - full CI/CD based on github actions - only updating container version on northflank remains
-
 # TODO - real DNS domain - current test domain is https://divifilter.naor.eu.org/
 
 # TODO - readme
