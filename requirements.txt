@@ -56,6 +56,6 @@ tzdata==2022.7
 tzlocal==4.2
 urllib3==1.26.15
 validators==0.20.0
-watchdog==2.3.1
+watchdog==3.0.0
 xmltodict==0.13.0
 zipp==3.15.0
