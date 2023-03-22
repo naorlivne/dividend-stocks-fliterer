@@ -34,7 +34,7 @@ st.text("Radar file date: " + radar_file.latest_local_version)
 
 radar_dict_filtered = starting_radar_dict
 
-unneeded_columns = ["FV", "None", None, "Current R", "New Member"]
+unneeded_columns = ["FV", "None", None, "Current R", "New Member", "Previous Div", "Streak Basis"]
 radar_dict_filtered = remove_unneeded_columns(radar_dict_filtered, unneeded_columns)
 
 with st.sidebar:
@@ -173,15 +173,11 @@ with st.sidebar:
                                       options=list_values_of_key_in_radar_dict(starting_radar_dict, "Industry"))
     radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_sectors, "Industry")
 
-# TODO - insert toggles to enable/disable filters
-
 # TODO - add payout ratio and PEG (radar file PEG seems off) from somewhere else (yahoo finance? finviz?)
 
 # TODO - add current data where relevant (price?) from somewhere (yahoo finance? finviz?)
 
 # TODO - unit tests all full coverage
-
-# TODO - run publicly open copy somewhere
 
 # TODO - real DNS domain - current test domain is https://divifilter.naor.eu.org/
 
