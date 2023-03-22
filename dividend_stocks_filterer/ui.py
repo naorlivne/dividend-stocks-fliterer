@@ -192,6 +192,8 @@ with st.sidebar:
 
 # TODO - add help field for every slider/selector/etc which explains what it is for
 
+# TODO - catragorize with header text titles the sidebar params and group them for easier finding
+
 st.dataframe(radar_dict_to_table(radar_dict_filtered), use_container_width=True)
 
 st.info("""
