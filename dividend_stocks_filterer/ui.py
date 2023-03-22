@@ -38,10 +38,6 @@ unneeded_columns = ["FV", "None", None, "Current R", "New Member", "Previous Div
 radar_dict_filtered = remove_unneeded_columns(radar_dict_filtered, unneeded_columns)
 
 with st.sidebar:
-    # exclude stocks by symbols
-    excluded_symbols = st.multiselect(label='Stock symbols to exclude', key="excluded_symbols",
-                                      options=list_values_of_key_in_radar_dict(starting_radar_dict, "Symbol"))
-    radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_symbols, "Symbol")
 
     # filter to only stocks with a dividend streak of over selected # of years
     min_streak_years = st.slider(label="Select minimum number of years of dividend streaks to display", min_value=5,
@@ -162,6 +158,11 @@ with st.sidebar:
                                            label="Select maximum Debt/Capital to display")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, max_debt_per_capital_value,
                                                                   "Debt/Capital", "under")
+
+    # exclude stocks by symbols
+    excluded_symbols = st.multiselect(label='Stock symbols to exclude', key="excluded_symbols",
+                                      options=list_values_of_key_in_radar_dict(starting_radar_dict, "Symbol"))
+    radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_symbols, "Symbol")
 
     # exclude stocks by sector
     excluded_sectors = st.multiselect(label='Sector to exclude', key="excluded_sectors",
