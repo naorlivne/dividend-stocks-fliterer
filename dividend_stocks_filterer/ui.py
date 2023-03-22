@@ -49,16 +49,6 @@ with st.sidebar:
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_streak_years, "No Years",
                                                                   "over")
 
-    # exclude stocks by sector
-    excluded_sectors = st.multiselect(label='Sector to exclude', key="excluded_sectors",
-                                      options=list_values_of_key_in_radar_dict(starting_radar_dict, "Sector"))
-    radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_sectors, "Sector")
-
-    # exclude stocks by industry
-    excluded_sectors = st.multiselect(label='Industry to exclude', key="excluded_industries",
-                                      options=list_values_of_key_in_radar_dict(starting_radar_dict, "Industry"))
-    radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_sectors, "Industry")
-
     # filter based on stock prices
     max_stock_price_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "Price", "max")
     price_range_min, price_range_max = st.slider(label="Select range of stock prices to filter by", min_value=1.0,
@@ -172,6 +162,16 @@ with st.sidebar:
                                            label="Select maximum Debt/Capital to display")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, max_debt_per_capital_value,
                                                                   "Debt/Capital", "under")
+
+    # exclude stocks by sector
+    excluded_sectors = st.multiselect(label='Sector to exclude', key="excluded_sectors",
+                                      options=list_values_of_key_in_radar_dict(starting_radar_dict, "Sector"))
+    radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_sectors, "Sector")
+
+    # exclude stocks by industry
+    excluded_sectors = st.multiselect(label='Industry to exclude', key="excluded_industries",
+                                      options=list_values_of_key_in_radar_dict(starting_radar_dict, "Industry"))
+    radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_sectors, "Industry")
 
 # TODO - insert toggles to enable/disable filters
 
