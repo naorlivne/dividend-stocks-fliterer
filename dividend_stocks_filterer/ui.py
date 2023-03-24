@@ -174,7 +174,7 @@ with st.sidebar:
                                       options=list_values_of_key_in_radar_dict(starting_radar_dict, "Industry"))
     radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_sectors, "Industry")
 
-# TODO - add payout ratio and PEG (radar file PEG seems off) from somewhere else (yahoo finance? finviz?)
+# TODO - add payout ratio, P/E, P/BV and PEG (radar file PEG seems off) from somewhere else (yahoo finance? finviz?)
 
 # TODO - add current data where relevant (price?) from somewhere (yahoo finance? finviz?)
 
