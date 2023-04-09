@@ -109,9 +109,9 @@ with st.sidebar:
     max_chowder_number_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "Chowder Number", "max")
     chowder_number = st.slider(min_value=0, max_value=int(min(max_chowder_number_to_filter_1y_avg, 25.0)),
                                key="min_chowder_number", value=0, label="Select minimum chowder number to display",
-                               help="Filters for stocks with a Chowder number of 12 or higher. Chowder number is a "
-                                    "rule-based system used to identify dividend growth stocks with strong total "
-                                    "return potential by combining dividend yield and dividend growth. A Chowder "
+                               help="Filters for stocks with a Chowder number of the given value or higher. Chowder "
+                                    "number is a rule-based system used to identify dividend growth stocks with strong "
+                                    "total return potential by combining dividend yield and dividend growth. A Chowder "
                                     "number of 12 or higher is generally considered a good value")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, chowder_number, "Chowder Number",
                                                                   "over")
