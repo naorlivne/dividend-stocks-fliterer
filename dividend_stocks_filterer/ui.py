@@ -41,7 +41,8 @@ with st.sidebar:
 
     # filter to only stocks with a dividend streak of over selected # of years
     min_streak_years = st.slider(label="Select minimum number of years of dividend streaks to display", min_value=5,
-                                 max_value=50, value=18, key="min_dividend_streak_years")
+                                 max_value=50, value=18, key="min_dividend_streak_years",
+                                 help="the minimum number of years in a row dividends are payed for a stock to show up")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_streak_years, "No Years",
                                                                   "over")
 
@@ -49,7 +50,8 @@ with st.sidebar:
     max_stock_price_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "Price", "max")
     price_range_min, price_range_max = st.slider(label="Select range of stock prices to filter by", min_value=1.0,
                                                  max_value=max_stock_price_to_filter, key="stock_price_range",
-                                                 value=(1.0, max_stock_price_to_filter))
+                                                 value=(1.0, max_stock_price_to_filter),
+                                                 help="minimum and maximum prices of stocks to show")
     radar_dict_filtered = filter_dividend_key_in_range(radar_dict_filtered, price_range_min, price_range_max, "Price")
 
     # filter based on yield, both current & 5y avg
@@ -60,7 +62,8 @@ with st.sidebar:
                                                  max_value=min(max_stock_yield_to_filter_highest_value, 25.0),
                                                  key="dividend_yield_range", min_value=0.0,
                                                  value=(0.0, min(max_stock_yield_to_filter_highest_value, 25.0)),
-                                                 help="this will filter both by Div Yield & by 5y Avg Yield")
+                                                 help="this will filter both by Div Yield (percentage of the stock "
+                                                      "current value payed back as dividends) & by 5y Avg Yield")
     radar_dict_filtered = filter_dividend_key_in_range(radar_dict_filtered, yield_range_min, yield_range_max,
                                                        "Div Yield")
     radar_dict_filtered = filter_dividend_key_in_range(radar_dict_filtered, yield_range_min, yield_range_max,
@@ -82,7 +85,8 @@ with st.sidebar:
     min_dgr = st.slider(min_value=max(min_stock_yield_to_filter_highest_value, -25.0),
                         max_value=min(max_stock_yield_to_filter_highest_value, 25.0),
                         key="min_dgr", value=0.0, label="Select minimum DGR % to display",
-                        help="this will filter the DGR % of 1,3,5 & 10 years (where applicable)")
+                        help="this will filter the DGR % (dividend growth rate - the percentage dividend increased) "
+                             "of 1,3,5 & 10 years (where applicable)")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_dgr, "DGR 1Y", "over")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_dgr, "DGR 3Y", "over")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_dgr, "DGR 5Y", "over")
@@ -93,13 +97,20 @@ with st.sidebar:
     min_fair_value_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "FV %", "min")
     fair_value = st.slider(min_value=int(max(min_fair_value_to_filter_1y_avg, -25.0)),
                            max_value=int(max(max_fair_value_to_filter_1y_avg, 0.0)),
-                           key="max_fair_value", value=0, label="Select maximum fair value % to display")
+                           key="max_fair_value", value=0, label="Select maximum fair value % to display",
+                           help="this will filter to only show stocks which FV % (fair value percentage - how much it "
+                                "is judged the company stock costs versus how much the company is actually worth) "
+                                "is below the set value")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, fair_value, "FV %", "under")
 
     # filter to only stocks with a chowder number over the selected value
     max_chowder_number_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "Chowder Number", "max")
     chowder_number = st.slider(min_value=0, max_value=int(min(max_chowder_number_to_filter_1y_avg, 25.0)),
-                               key="min_chowder_number", value=0, label="Select minimum chowder number to display")
+                               key="min_chowder_number", value=0, label="Select minimum chowder number to display",
+                               help="filters to only stocks who's chowder number (Chowder number - rule-based system "
+                                    "used to identify dividend growth stocks with strong total return potential by "
+                                    "combining dividend yield and dividend growth.), a chowder number of 12+ is "
+                                    "generally accepted as a good value")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, chowder_number, "Chowder Number",
                                                                   "over")
 
@@ -107,7 +118,10 @@ with st.sidebar:
     max_eps_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "EPS 1Y", "max")
     min_eps_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "EPS 1Y", "min")
     min_eps = st.slider(min_value=min_eps_to_filter_1y_avg, key="min_eps_number", value=0.0,
-                        max_value=max_eps_to_filter_1y_avg, label="Select minimum EPS over 1 year to display")
+                        max_value=max_eps_to_filter_1y_avg, label="Select minimum EPS growth over 1 year to display",
+                        help="EPS stands for earning per share, how much a company earned for each share at the time"
+                             "frame, this will filter to only companies with the given value has grown over the past "
+                             "year or higher")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_eps, "EPS 1Y", "over")
 
     # filter to only stocks with a revenue over 1y over the selected value
@@ -115,7 +129,9 @@ with st.sidebar:
     min_revenue_1y_avg_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "Revenue 1Y", "min")
     min_revenue = st.slider(min_value=min_revenue_1y_avg_to_filter_1y_avg, key="min_revenue_1y_avg", value=0.0,
                             max_value=max_revenue_1y_avg_to_filter_1y_avg,
-                            label="Select minimum revenue over 1 year to display")
+                            label="Select minimum revenue growth over 1 year to display",
+                            help="this will filter to only companies who's revenues have grown at or over the given"
+                                 "value")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_revenue, "Revenue 1Y",
                                                                   "over")
 
@@ -123,21 +139,31 @@ with st.sidebar:
     max_npm_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "NPM", "max")
     min_npm_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "NPM", "min")
     min_npm = st.slider(min_value=min_npm_to_filter, key="min_npm_number", value=0.0,
-                        max_value=max_npm_to_filter, label="Select minimum NPM % to display")
+                        max_value=max_npm_to_filter, label="Select minimum NPM % to display",
+                        help="NPM stands for net profit margin, calculated by dividing earnings after taxes by net "
+                             "revenue, and multiplying the total by 100%. The higher the ratio, the more cash the "
+                             "company has available to distribute to shareholders or invest in new opportunities")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_npm, "NPM", "over")
 
     # filter to only stocks with a cf/share over the selected value
     max_cf_per_share_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "CF/Share", "max")
     min_cf_per_share_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "CF/Share", "min")
     min_cf_per_share = st.slider(min_value=min_cf_per_share_to_filter, key="min_cf_per_share_number", value=0.0,
-                                 max_value=max_cf_per_share_to_filter, label="Select minimum cf/share to display")
+                                 max_value=max_cf_per_share_to_filter, label="Select minimum cf/share to display",
+                                 help="cf/share stands for cash flow per share,  the after-tax earnings plus "
+                                      "depreciation on a per-share basis that functions as a measure of a firm's "
+                                      "financial strength. Many financial analysts place more emphasis on cash flow "
+                                      "per share than on earnings per share ")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_cf_per_share, "CF/Share",
                                                                   "over")
     # filter to only stocks with a ROE over the selected value
     max_roe_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "ROE", "max")
     min_roe_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "ROE", "min")
     min_roe = st.slider(min_value=min_roe_to_filter, key="min_roe_number", value=0.0,
-                        max_value=max_roe_to_filter, label="Select minimum ROE to display")
+                        max_value=max_roe_to_filter, label="Select minimum ROE to display",
+                        help="ROE (return on equity) is equal to a fiscal year net income, divided by total equity, "
+                             "expressed as a percentage, this will filter to only companies who have an ROE over the "
+                             "given value")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_roe, "ROE", "over")
 
     # filter to only stocks with a p/bv under the selected value
@@ -147,7 +173,15 @@ with st.sidebar:
                                          key="max_price_per_book_value_number",
                                          value=max_price_per_book_value_to_filter,
                                          max_value=max_price_per_book_value_to_filter,
-                                         label="Select maximum P/BV to display")
+                                         label="Select maximum P/BV to display",
+                                         help="P/BV stands for price to book value, the ratio of the market value of a "
+                                              "company's shares (share price) over its book value of equity. The book "
+                                              "value of equity, in turn, is the value of a company's assets expressed "
+                                              "on the balance sheet,  Traditionally, any value under 1.0 is considered "
+                                              "desirable for value investors, indicating an undervalued stock may have "
+                                              "been identified. However, some value investors may often consider "
+                                              "stocks with a less stringent P/B value of less than 3.0 as their "
+                                              "benchmark.")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, max_price_per_book_value, "P/BV",
                                                                   "under")
 
@@ -155,23 +189,31 @@ with st.sidebar:
     max_debt_per_capital_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "Debt/Capital", "max")
     max_debt_per_capital_value = st.slider(min_value=0.0, key="max_debt_per_capital_value",
                                            value=0.5, max_value=min(5.0, max_debt_per_capital_to_filter),
-                                           label="Select maximum Debt/Capital to display")
+                                           label="Select maximum Debt/Capital to display",
+                                           help="the debt to capital ratio, how much the company barrowed devided to "
+                                                "how much it has, the lower the value to less the company owes compared"
+                                                "to the assets is has, investors tend to like it to stay under 0.6 "
+                                                "(6o%) but some go up to 0.8 (80%) or higher as debt can mean also a"
+                                                "growing company which uses the debt to increase it's size")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, max_debt_per_capital_value,
                                                                   "Debt/Capital", "under")
 
     # exclude stocks by symbols
     excluded_symbols = st.multiselect(label='Stock symbols to exclude', key="excluded_symbols",
-                                      options=list_values_of_key_in_radar_dict(starting_radar_dict, "Symbol"))
+                                      options=list_values_of_key_in_radar_dict(starting_radar_dict, "Symbol"),
+                                      help="exclude specific stocks from your search")
     radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_symbols, "Symbol")
 
     # exclude stocks by sector
     excluded_sectors = st.multiselect(label='Sector to exclude', key="excluded_sectors",
-                                      options=list_values_of_key_in_radar_dict(starting_radar_dict, "Sector"))
+                                      options=list_values_of_key_in_radar_dict(starting_radar_dict, "Sector"),
+                                      help="exclude whole sectors from your search")
     radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_sectors, "Sector")
 
     # exclude stocks by industry
     excluded_sectors = st.multiselect(label='Industry to exclude', key="excluded_industries",
-                                      options=list_values_of_key_in_radar_dict(starting_radar_dict, "Industry"))
+                                      options=list_values_of_key_in_radar_dict(starting_radar_dict, "Industry"),
+                                      help="exclude whole industries from your search")
     radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_sectors, "Industry")
 
 # TODO - add payout ratio, P/E, P/BV and PEG (radar file PEG seems off) from somewhere else (yahoo finance? finviz?)
@@ -189,8 +231,6 @@ with st.sidebar:
 # TODO - publicize & monetize somehow?
 
 # TODO - https://tree-nation.com/offset-website
-
-# TODO - add help field for every slider/selector/etc which explains what it is for
 
 # TODO - catragorize with header text titles the sidebar params and group them for easier finding
 
