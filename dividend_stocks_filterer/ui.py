@@ -236,6 +236,8 @@ with st.sidebar:
 
 # TODO - catragorize with header text titles the sidebar params and group them for easier finding
 
+# TODO - google analytics
+
 st.divider()
 
 st.dataframe(radar_dict_to_table(radar_dict_filtered), use_container_width=True)
