@@ -42,7 +42,8 @@ with st.sidebar:
     # filter to only stocks with a dividend streak of over selected # of years
     min_streak_years = st.slider(label="Select minimum number of years of dividend streaks to display", min_value=5,
                                  max_value=50, value=18, key="min_dividend_streak_years",
-                                 help="the minimum number of years in a row dividends are payed for a stock to show up")
+                                 help="Choose the minimum number of consecutive years a stock has paid dividends to be "
+                                      "displayed")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_streak_years, "No Years",
                                                                   "over")
 
@@ -51,7 +52,7 @@ with st.sidebar:
     price_range_min, price_range_max = st.slider(label="Select range of stock prices to filter by", min_value=1.0,
                                                  max_value=max_stock_price_to_filter, key="stock_price_range",
                                                  value=(1.0, max_stock_price_to_filter),
-                                                 help="minimum and maximum prices of stocks to show")
+                                                 help="Select the minimum and maximum prices of stocks to display")
     radar_dict_filtered = filter_dividend_key_in_range(radar_dict_filtered, price_range_min, price_range_max, "Price")
 
     # filter based on yield, both current & 5y avg
@@ -62,8 +63,9 @@ with st.sidebar:
                                                  max_value=min(max_stock_yield_to_filter_highest_value, 25.0),
                                                  key="dividend_yield_range", min_value=0.0,
                                                  value=(0.0, min(max_stock_yield_to_filter_highest_value, 25.0)),
-                                                 help="this will filter both by Div Yield (percentage of the stock "
-                                                      "current value payed back as dividends) & by 5y Avg Yield")
+                                                 help="Use this slider to filter stocks by dividend yield, which is "
+                                                      "the percentage of the stock's current value paid back as "
+                                                      "dividends. This slider will also filter by 5-year average yield")
     radar_dict_filtered = filter_dividend_key_in_range(radar_dict_filtered, yield_range_min, yield_range_max,
                                                        "Div Yield")
     radar_dict_filtered = filter_dividend_key_in_range(radar_dict_filtered, yield_range_min, yield_range_max,
@@ -98,19 +100,19 @@ with st.sidebar:
     fair_value = st.slider(min_value=int(max(min_fair_value_to_filter_1y_avg, -25.0)),
                            max_value=int(max(max_fair_value_to_filter_1y_avg, 0.0)),
                            key="max_fair_value", value=0, label="Select maximum fair value % to display",
-                           help="this will filter to only show stocks which FV % (fair value percentage - how much it "
-                                "is judged the company stock costs versus how much the company is actually worth) "
-                                "is below the set value")
+                           help="This filter will only display stocks with a Fair Value Percentage (FV%) below the set "
+                                "FV% indicates how much the company stock is judged to cost compared to its actual "
+                                "worth")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, fair_value, "FV %", "under")
 
     # filter to only stocks with a chowder number over the selected value
     max_chowder_number_to_filter_1y_avg = min_max_value_of_any_stock_key(starting_radar_dict, "Chowder Number", "max")
     chowder_number = st.slider(min_value=0, max_value=int(min(max_chowder_number_to_filter_1y_avg, 25.0)),
                                key="min_chowder_number", value=0, label="Select minimum chowder number to display",
-                               help="filters to only stocks who's chowder number (Chowder number - rule-based system "
-                                    "used to identify dividend growth stocks with strong total return potential by "
-                                    "combining dividend yield and dividend growth.), a chowder number of 12+ is "
-                                    "generally accepted as a good value")
+                               help="Filters for stocks with a Chowder number of 12 or higher. Chowder number is a "
+                                    "rule-based system used to identify dividend growth stocks with strong total "
+                                    "return potential by combining dividend yield and dividend growth. A Chowder "
+                                    "number of 12 or higher is generally considered a good value")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, chowder_number, "Chowder Number",
                                                                   "over")
 
@@ -153,7 +155,7 @@ with st.sidebar:
                                  help="cf/share stands for cash flow per share,  the after-tax earnings plus "
                                       "depreciation on a per-share basis that functions as a measure of a firm's "
                                       "financial strength. Many financial analysts place more emphasis on cash flow "
-                                      "per share than on earnings per share ")
+                                      "per share than on earnings per share")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_cf_per_share, "CF/Share",
                                                                   "over")
     # filter to only stocks with a ROE over the selected value
