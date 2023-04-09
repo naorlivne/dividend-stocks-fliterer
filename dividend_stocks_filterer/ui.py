@@ -132,7 +132,7 @@ with st.sidebar:
     min_revenue = st.slider(min_value=min_revenue_1y_avg_to_filter_1y_avg, key="min_revenue_1y_avg", value=0.0,
                             max_value=max_revenue_1y_avg_to_filter_1y_avg,
                             label="Select minimum revenue growth over 1 year to display",
-                            help="this will filter to only companies who's revenues have grown at or over the given"
+                            help="this will filter to only companies who's revenues have grown at or over the given "
                                  "value")
     radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_revenue, "Revenue 1Y",
                                                                   "over")
