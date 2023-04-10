@@ -32,7 +32,8 @@ if configuration["google_analytics_tag"] is not None:
         </script>
     """
     google_analytics_tag = configuration["google_analytics_tag"]
-    st.markdown(google_analytics_text_block.format(google_analytics_tag=google_analytics_tag), unsafe_allow_html=True)
+    google_analytics_formatted_block = google_analytics_text_block.format(google_analytics_tag=google_analytics_tag)
+    st.markdown(google_analytics_formatted_block, unsafe_allow_html=True)
 
 radar_file = DividendRadar(
     dividend_radar_url=configuration["dividend_radar_download_url"],
