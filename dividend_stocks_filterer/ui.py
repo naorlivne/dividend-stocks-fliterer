@@ -24,16 +24,19 @@ if configuration["google_analytics_tag"] is not None:
     google_analytics_text_block = """
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={google_analytics_tag}"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '{google_analytics_tag}');
-        </script>
-    """
-    google_analytics_tag = configuration["google_analytics_tag"]
-    google_analytics_formatted_block = google_analytics_text_block.format(google_analytics_tag=google_analytics_tag)
-    st.markdown(google_analytics_formatted_block, unsafe_allow_html=True)
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(config){{
+            dataLayer.push(arguments);
+            if (typeof(config) != 'undefined') {{
+                window['ga-disable-' + config] = !{{cookieEnabled}};
+            }}
+        }}
+        gtag('js', new Date());
+        gtag('config', '{google_analytics_tag}', {{'anonymize_ip': true}});
+    </script>
+    """.format(google_analytics_tag=configuration["google_analytics_tag"])
+    st.markdown(google_analytics_text_block, unsafe_allow_html=True)
 
 radar_file = DividendRadar(
     dividend_radar_url=configuration["dividend_radar_download_url"],
