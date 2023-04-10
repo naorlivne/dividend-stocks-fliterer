@@ -20,6 +20,20 @@ footer {visibility: hidden;}
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
+if configuration["google_analytics_tag"] is not None:
+    google_analytics_text_block = '''
+                <!-- Global site tag (gtag.js) - Google Analytics -->
+                <script async src="https://www.googletagmanager.com/gtag/js?id={google_analytics_tag}"></script>
+                <script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', '{google_analytics_tag}');
+                </script>
+            '''
+    st.markdown(google_analytics_text_block.format(google_analytics_tag=configuration["google_analytics_tag"]),
+                unsafe_allow_html=True)
+
 radar_file = DividendRadar(
     dividend_radar_url=configuration["dividend_radar_download_url"],
     local_file=configuration["local_file_path"]
@@ -236,7 +250,7 @@ with st.sidebar:
 
 # TODO - catragorize with header text titles the sidebar params and group them for easier finding
 
-# TODO - google analytics
+# TODO - google analytics - real site address tag
 
 st.divider()
 

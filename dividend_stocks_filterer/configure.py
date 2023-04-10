@@ -20,5 +20,7 @@ def read_configurations(config_folder: str = "config") -> dict:
     config["dividend_radar_download_url"] = \
         parser.read_configuration_variable("dividend_radar_download_url",
                                            default_value="https://www.portfolio-insight.com/dividend-radar")
-    config["local_file_path"] = "/tmp/latest_dividend_radar.xlsx"
+    config["local_file_path"] = parser.read_configuration_variable("local_file_path",
+                                                                   default_value="/tmp/latest_dividend_radar.xlsx")
+    config["google_analytics_tag"] = parser.read_configuration_variable("google_analytics_tag", default_value=None)
     return config
