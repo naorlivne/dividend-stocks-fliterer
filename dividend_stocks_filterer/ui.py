@@ -223,7 +223,7 @@ with st.sidebar:
 
 # TODO - add current data where relevant (price?) from somewhere (yahoo finance? finviz?)
 
-# TODO - unit tests all full coverage
+# TODO - unit tests all full coverage and readme badge
 
 # TODO - real DNS domain - current test domain is https://divifilter.naor.eu.org/
 
