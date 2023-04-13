@@ -20,28 +20,11 @@ footer {visibility: hidden;}
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-if configuration["google_analytics_tag"] is not None:
-    google_analytics_text_block = """
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={google_analytics_tag}"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(config){{
-            dataLayer.push(arguments);
-            if (typeof(config) != 'undefined') {{
-                window['ga-disable-' + config] = !{{cookieEnabled}};
-            }}
-        }}
-        gtag('js', new Date());
-        gtag('config', '{google_analytics_tag}', {{'anonymize_ip': true}});
-    </script>
-    """.format(google_analytics_tag=configuration["google_analytics_tag"])
-    st.markdown(google_analytics_text_block, unsafe_allow_html=True)
-
 radar_file = DividendRadar(
     dividend_radar_url=configuration["dividend_radar_download_url"],
     local_file=configuration["local_file_path"]
 )
+
 if radar_file.check_if_local_is_latest() is False:
     radar_file.download_latest_version()
 
@@ -254,7 +237,7 @@ with st.sidebar:
 
 # TODO - catragorize with header text titles the sidebar params and group them for easier finding
 
-# TODO - google analytics - real site address tag
+# TODO - some user analytics - google analytics in streamlit is too hacky right now
 
 st.divider()
 
