@@ -223,7 +223,8 @@ with st.sidebar:
 
 # TODO - add current data where relevant from yahoo finance (function is WIP, need to finish and use it in the code)
 
-# TODO - add line of when was the last data pull from yahoo finance
+# TODO - add line of when was the last data pull from yahoo finance (datetime is created when function runs, just
+# need to print it on the ui remains
 
 # TODO - unit tests all full coverage and readme badge
 
