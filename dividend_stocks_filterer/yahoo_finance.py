@@ -10,7 +10,6 @@ def get_yahoo_finance_data_for_tickers_tuple(tickers_tuple: tuple) -> dict:
     Takes a tuple of tickers and returns the relevant data for them from yahoo_finance, have to use tuple because of
     caching hating lists
 
-    :rtype: object
     :param tickers_tuple: the tuple of tickers you want the data for
 
     :return filtered_radar_dict: A dict including all data for tickers requested
@@ -20,32 +19,16 @@ def get_yahoo_finance_data_for_tickers_tuple(tickers_tuple: tuple) -> dict:
     tickers = yf.Tickers(list(tickers_tuple))
 
     for stock_ticker in tickers_tuple:
-        # TODO - I stopped here checking which of the wanted_stock_dict below is really needed, the key is what the row
-        # in divifilter is named and the value is what yahoo-finance returns to said value
-        # TODO - also need to check the relation between what needed from yahoo finance to the name in divifilter as
-        # I didn't check all names in divifilter  yet
+        # TODO - I stopped here, need to implement it overwriting existing radar file data and add fields that are
+        # missing
         wanted_stock_dict = {
-            "price": "currentPrice",
-            "payoutRatio": "payoutRatio",
-            "trailingPE": "trailingPE",
-            "forwardPE": "forwardPE",
-            "low": "fiftyTwoWeekLow",
-            "high": "fiftyTwoWeekHigh",
-            "trailingAnnualDividendRate": "trailingAnnualDividendRate",
-            "trailingAnnualDividendYield": "trailingAnnualDividendYield",
-            "profitMargins": "profitMargins",
-            "bookValue": "bookValue",
-            "priceToBook": "priceToBook",
-            "netIncomeToCommon": "netIncomeToCommon",
-            "trailingEps": "trailingEps",
-            "forwardEps": "forwardEps",
-            "pegRatio": "pegRatio",
-            "debtToEquity": "debtToEquity",
-            "revenuePerShare": "revenuePerShare",
-            "returnOnAssets": "returnOnAssets",
-            "returnOnEquity": "returnOnEquity",
-            "earningsGrowth": "earningsGrowth",
-            "revenueGrowth": "revenueGrowth"
+            "Price": "currentPrice",
+            "Payout Ratio": "payoutRatio",
+            "Low": "fiftyTwoWeekLow",
+            "High": "fiftyTwoWeekHigh",
+            "P/BV": "priceToBook",
+            "Debt/Equity": "debtToEquity",
+            "ROE": "returnOnEquity"
         }
         filtered_radar_dict[stock_ticker] = {}
         for wanted_stock_key, wanted_stock_value in wanted_stock_dict.items():
