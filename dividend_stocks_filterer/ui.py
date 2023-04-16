@@ -219,9 +219,9 @@ with st.sidebar:
                                       help="exclude whole industries from your search")
     radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_sectors, "Industry")
 
-# TODO - add payout ratio, P/E, P/BV and PEG (radar file PEG seems off) from somewhere else (yahoo finance? finviz?)
+# TODO - add payout ratio, P/E, P/BV and PEG (radar file PEG seems off) from somewhere else (likely yfinance)
 
-# TODO - add current data where relevant (price?) from somewhere (yahoo finance? finviz?)
+# TODO - add current data where relevant (price?) from somewhere (likely yfinance)
 
 # TODO - unit tests all full coverage and readme badge
 
