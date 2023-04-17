@@ -35,7 +35,7 @@ st.text("Radar file date: " + radar_file.latest_local_version)
 
 radar_dict_filtered = starting_radar_dict
 
-unneeded_columns = ["FV", "None", None, "Current R", "New Member", "Previous Div", "Streak Basis", "EX-Date",
+unneeded_columns = ["FV", "None", None, "Current R", "New Member", "Previous Div", "Streak Basis", "Ex-Date",
                     "Pay-Date"]
 radar_dict_filtered = remove_unneeded_columns(radar_dict_filtered, unneeded_columns)
 
