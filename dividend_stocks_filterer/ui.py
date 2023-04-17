@@ -113,7 +113,7 @@ with st.sidebar:
         radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, chowder_number,
                                                                       "Chowder Number",
                                                                       "over")
-    with st.expander("Financal filtering options", expanded=True):
+    with st.expander("Financial filtering options", expanded=True):
 
         # filter based on stock prices
         max_stock_price_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "Price", "max")
@@ -218,7 +218,7 @@ with st.sidebar:
         radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, max_debt_per_capital_value,
                                                                       "Debt/Capital", "under")
 
-    with st.expander("Exclusion filtering    options", expanded=True):
+    with st.expander("Exclusion filtering options", expanded=True):
 
         # exclude stocks by symbols
         excluded_symbols = st.multiselect(label='Stock symbols to exclude', key="excluded_symbols",
