@@ -1,5 +1,4 @@
 from parse_it import ParseIt
-from typing import Optional
 
 
 def read_configurations(config_folder: str = "config") -> dict:

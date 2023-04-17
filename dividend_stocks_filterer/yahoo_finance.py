@@ -1,9 +1,8 @@
-from typing import Tuple
-
 import yfinance as yf
 from retrying import retry
 from cachetools import cached, TTLCache
 from datetime import datetime, timezone
+import requests
 
 
 @cached(cache=TTLCache(maxsize=2048, ttl=600))
@@ -34,8 +33,15 @@ def get_yahoo_finance_data_for_tickers_tuple(tickers_tuple: tuple) -> tuple[date
         }
         filtered_radar_dict[stock_ticker] = {}
         for wanted_stock_key, wanted_stock_value in wanted_stock_dict.items():
-            filtered_radar_dict[stock_ticker][wanted_stock_key] = \
-                tickers.tickers[stock_ticker.upper()].info[wanted_stock_value]
+            try:
+                filtered_radar_dict[stock_ticker][wanted_stock_key] = \
+                    tickers.tickers[stock_ticker.upper()].info[wanted_stock_value]
+            except KeyError:
+                pass
+            except TypeError:
+                pass
+            except requests.exceptions.HTTPError:
+                pass
     yahoo_finance_query_date_time = datetime.now(timezone.utc)
     return yahoo_finance_query_date_time, filtered_radar_dict
 
