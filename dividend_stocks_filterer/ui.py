@@ -41,6 +41,7 @@ radar_dict_filtered = remove_unneeded_columns(radar_dict_filtered, unneeded_colu
 # TODO - need to either move this OOB or move everything to happen in microservices way on another OOB component
 #yahoo_query_time, yahoo_query_data = \
 #    get_yahoo_finance_data_for_tickers_list(list_values_of_key_in_radar_dict(starting_radar_dict, "Symbol"))
+#st.text("yahoo finance date/time last update: " + str(yahoo_query_time))
 
 with st.sidebar:
 
