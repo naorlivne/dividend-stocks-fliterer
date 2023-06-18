@@ -192,9 +192,9 @@ with st.sidebar:
         max_stock_pe_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "P/E", "max")
         min_stock_pe_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "P/E", "min")
         pe_range_min, pe_range_max = st.slider(label="Select range of stock to filter by it's P/E",
-                                               max_value=min(max_stock_pe_to_filter, 50.0),
-                                               key="dividend_pe_range", value=(0.0, min(max_stock_pe_to_filter, 50.0)),
-                                               min_value=max(min_stock_pe_to_filter, -25.0),
+                                               max_value=min(max_stock_pe_to_filter, 100.0),
+                                               key="dividend_pe_range", value=(0.0, 20.0),
+                                               min_value=max(min_stock_pe_to_filter, -50.0),
                                                help="Use this slider to filter stocks by price to earnings ratio,"
                                                     " which is the  price of the stoc compared to it's earning, "
                                                     "negative values mean the company is losing money, a P/E "
