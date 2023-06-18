@@ -188,6 +188,20 @@ with st.sidebar:
                                  "ROE over the given value")
         radar_dict_filtered = filter_dividend_key_over_or_under_value(radar_dict_filtered, min_roe, "ROE", "over")
 
+        # filter based on P/E
+        max_stock_pe_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "P/E", "max")
+        min_stock_pe_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "P/E", "min")
+        pe_range_min, pe_range_max = st.slider(label="Select range of stock to filter by it's P/E",
+                                                     max_value=min(max_stock_pe_to_filter, 50.0),
+                                                     key="dividend_yield_range", value=0.0,
+                                                     min_value=max(min_stock_pe_to_filter, -25.0),
+                                                     help="Use this slider to filter stocks by price to earnings ratio,"
+                                                          " which is the  price of the stoc compared to it's earning, "
+                                                          "negative values mean the company is losing money, a P/E "
+                                                          "over 20 is generally considered expensive while while under"
+                                                          "15 (but above 0) is considered cheap")
+        radar_dict_filtered = filter_dividend_key_in_range(radar_dict_filtered, pe_range_min, pe_range_max, "P/E")
+
         # filter to only stocks with a p/bv under the selected value
         max_price_per_book_value_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "P/BV", "max")
         min_price_per_book_value_to_filter = min_max_value_of_any_stock_key(starting_radar_dict, "P/BV", "min")
