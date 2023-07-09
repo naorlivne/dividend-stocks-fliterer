@@ -31,7 +31,7 @@ multitasking==0.0.11
 numpy==1.25.0
 openpyxl==3.1.2
 packaging==23.1
-pandas==2.0.2
+pandas==2.0.3
 parse-it==2023.6.27.11.20
 Pillow==9.5.0
 protobuf==3.20.3
