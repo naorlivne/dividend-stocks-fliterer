@@ -66,5 +66,5 @@ validators==0.20.0
 watchdog==3.0.0
 webencodings==0.5.1
 xmltodict==0.13.0
-yfinance==0.2.22
+yfinance==0.2.23
 zipp==3.16.1
