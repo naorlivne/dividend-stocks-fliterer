@@ -4,6 +4,7 @@ from filterers import *
 from configure import *
 from helper_functions import *
 #from yahoo_finance import *
+#from finviz_data import *
 
 configuration = read_configurations()
 
@@ -40,9 +41,13 @@ unneeded_columns = ["FV", "None", None, "Current R", "New Member", "Previous Div
 radar_dict_filtered = remove_unneeded_columns(radar_dict_filtered, unneeded_columns)
 
 # TODO - need to either move this OOB or move everything to happen in microservices way on another OOB component
+# TODO - also needs to merge the diff delta back into the main radar_dict_filtered
 #yahoo_query_time, yahoo_query_data = \
 #    get_yahoo_finance_data_for_tickers_list(list_values_of_key_in_radar_dict(starting_radar_dict, "Symbol"))
 #st.text("yahoo finance date/time last update: " + str(yahoo_query_time))
+#finviz_query_time, finviz_query_data = \
+#    get_finviz_data_for_tickers_list(list_values_of_key_in_radar_dict(starting_radar_dict, "Symbol"))
+#st.text("finviz date/time last update: " + str(finviz_query_time))
 
 with st.sidebar:
 
