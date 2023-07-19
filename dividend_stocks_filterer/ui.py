@@ -32,7 +32,7 @@ if radar_file.check_if_local_is_latest() is False:
 starting_radar_dict = radar_file.read_radar_file_to_dict()
 
 st.title('Divifilter')
-st.text("Radar file date: " + radar_file.latest_local_version)
+st.text("Data update date: " + radar_file.latest_local_version)
 
 radar_dict_filtered = starting_radar_dict
 
