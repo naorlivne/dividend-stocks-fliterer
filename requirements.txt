@@ -63,7 +63,7 @@ rpds-py==0.10.0
 semver==3.0.1
 six==1.16.0
 smmap==5.0.0
-soupsieve==2.4.1
+soupsieve==2.5
 streamlit==1.26.0
 tenacity==8.2.2
 toml==0.10.2
