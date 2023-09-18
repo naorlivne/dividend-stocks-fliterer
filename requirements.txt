@@ -62,7 +62,7 @@ rich==13.5.2
 rpds-py==0.10.3
 semver==3.0.1
 six==1.16.0
-smmap==5.0.0
+smmap==5.0.1
 soupsieve==2.5
 streamlit==1.26.0
 tenacity==8.2.3
