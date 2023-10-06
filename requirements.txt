@@ -38,7 +38,7 @@ multidict==6.0.4
 multitasking==0.0.11
 numpy==1.26.0
 openpyxl==3.1.2
-packaging==23.1
+packaging==23.2
 pandas==2.1.1
 parse-it==2023.9.13.8.55
 Pillow==10.0.1
