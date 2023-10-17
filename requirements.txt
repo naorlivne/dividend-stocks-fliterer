@@ -41,7 +41,7 @@ openpyxl==3.1.2
 packaging==23.2
 pandas==2.1.1
 parse-it==2023.10.5.16.31
-Pillow==10.0.1
+Pillow==10.1.0
 protobuf==4.24.4
 pyarrow==13.0.0
 pycparser==2.21
