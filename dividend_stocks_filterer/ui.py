@@ -257,11 +257,9 @@ with st.sidebar:
                                           help="exclude whole industries from your search")
         radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_sectors, "Industry")
 
-# TODO - add payout ratio, P/E, P/BV and PEG from yahoo finance (function is WIP, need to finish and use it in the code)
+# TODO - move to centralized db that is updated via cron
 
-# TODO - add current data where relevant from yahoo finance (function is WIP, need to finish and use it in the code)
-
-# TODO - add line of when was the last data pull from yahoo finance (datetime is created when function runs, just
+# TODO - add line of when was the last data pull from finviz (datetime is created when function runs, just
 # need to print it on the ui remains
 
 # TODO - unit tests all full coverage and readme badge
@@ -273,8 +271,6 @@ with st.sidebar:
 # TODO - github link to website
 
 # TODO - publicize & monetize somehow?
-
-# TODO - https://tree-nation.com/offset-website
 
 # TODO - some user analytics - google analytics in streamlit is too hacky right now
 

@@ -60,8 +60,9 @@ def filter_dividend_key_in_range(radar_dict: dict, min_price_range: float, max_p
     """
     filtered_radar_dict = {}
     for key, value in radar_dict.items():
-        if min_price_range <= value[stocks_key] <= max_price_range:
-            filtered_radar_dict[key] = value
+        if value[stocks_key] is not None:
+            if min_price_range <= value[stocks_key] <= max_price_range:
+                filtered_radar_dict[key] = value
     return filtered_radar_dict
 
 
