@@ -72,7 +72,7 @@ tornado==6.3.3
 tqdm==4.66.1
 typing-extensions==4.8.0
 tzdata==2023.3
-tzlocal==5.1
+tzlocal==5.2
 urllib3==2.1.0
 user-agent==0.1.10
 validators==0.22.0
