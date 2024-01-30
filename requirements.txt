@@ -40,7 +40,7 @@ numpy==1.26.3
 openpyxl==3.1.2
 packaging==23.2
 pandas==2.2.0
-parse_it==2024.1.8.9.36
+parse_it==2024.1.29.13.26
 peewee==3.17.0
 pillow==10.2.0
 protobuf==4.25.2
