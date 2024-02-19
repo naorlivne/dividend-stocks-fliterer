@@ -74,7 +74,7 @@ tqdm==4.66.1
 typing_extensions==4.9.0
 tzdata==2023.4
 tzlocal==5.2
-urllib3==2.1.0
+urllib3==2.2.1
 user-agent==0.1.10
 validators==0.22.0
 watchdog==3.0.0
