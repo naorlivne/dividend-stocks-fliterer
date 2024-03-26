@@ -70,7 +70,7 @@ tenacity==8.2.3
 toml==0.10.2
 toolz==0.12.1
 tornado==6.4
-tqdm==4.66.1
+tqdm==4.66.2
 typing_extensions==4.10.0
 tzdata==2023.4
 tzlocal==5.2
