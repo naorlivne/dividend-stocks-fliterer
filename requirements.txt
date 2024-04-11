@@ -39,7 +39,7 @@ multitasking==0.0.11
 numpy==1.26.4
 openpyxl==3.1.2
 packaging==23.2
-pandas==2.2.1
+pandas==2.2.2
 parse_it==2024.3.25.9.54
 peewee==3.17.1
 pillow==10.3.0
