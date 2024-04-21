@@ -252,10 +252,10 @@ with st.sidebar:
         radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_sectors, "Sector")
 
         # exclude stocks by industry
-        excluded_sectors = st.multiselect(label='Industry to exclude', key="excluded_industries",
+        excluded_industries = st.multiselect(label='Industry to exclude', key="excluded_industries",
                                           options=list_values_of_key_in_radar_dict(starting_radar_dict, "Industry"),
                                           help="exclude whole industries from your search")
-        radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_sectors, "Industry")
+        radar_dict_filtered = filter_exclude_values_of_key(radar_dict_filtered, excluded_industries, "Industry")
 
 # TODO - move to centralized db that is updated via cron
 
