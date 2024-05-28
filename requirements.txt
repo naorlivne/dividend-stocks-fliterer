@@ -44,7 +44,7 @@ parse_it==2024.5.26.13.36
 peewee==3.17.3
 pillow==10.3.0
 protobuf==4.25.2
-pyarrow==16.0.0
+pyarrow==16.1.0
 pycparser==2.22
 pydeck==0.9.1
 Pygments==2.18.0
