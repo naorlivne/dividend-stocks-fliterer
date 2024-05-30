@@ -82,11 +82,12 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: naorlivne/${{ github.event.repository.name }}:v${{ github.run_number }}
-      - name: Deploy to Northflank
-        uses: northflank/deploy-to-northflank@v1
-        with:
-          northflank-api-key: ${{ secrets.NORTHFLANK_API_KEY }}
-          project-id: ${{ secrets.PROJECT_ID }}
-          service-id: ${{ secrets.SERVICE_ID }}
-          image-path: naorlivne/${{ github.event.repository.name }}:v${{ github.run_number }}
-          credentials-id: ${{ secrets.CREDENTIALS_ID }}
+      # northflank now runs https://github.com/divifilter/divifilter-streamlit
+      #- name: Deploy to Northflank
+      #  uses: northflank/deploy-to-northflank@v1
+      #  with:
+      #    northflank-api-key: ${{ secrets.NORTHFLANK_API_KEY }}
+      #    project-id: ${{ secrets.PROJECT_ID }}
+      #    service-id: ${{ secrets.SERVICE_ID }}
+      #    image-path: naorlivne/${{ github.event.repository.name }}:v${{ github.run_number }}
+      #    credentials-id: ${{ secrets.CREDENTIALS_ID }}
