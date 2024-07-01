@@ -49,7 +49,7 @@ pycparser==2.22
 pydeck==0.9.1
 Pygments==2.18.0
 pyhcl==0.4.5
-Pympler==1.0.1
+Pympler==1.1
 pyrsistent==0.20.0
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
