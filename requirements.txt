@@ -65,7 +65,7 @@ semver==3.0.2
 six==1.16.0
 smmap==5.0.1
 soupsieve==2.5
-streamlit==1.36.0
+streamlit==1.38.0
 tenacity==8.4.2
 toml==0.10.2
 toolz==0.12.1
