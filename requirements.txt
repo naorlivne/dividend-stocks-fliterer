@@ -76,7 +76,7 @@ tzdata==2024.1
 tzlocal==5.2
 urllib3==2.2.2
 user-agent==0.1.10
-validators==0.28.3
+validators==0.34.0
 watchdog==4.0.1
 webencodings==0.5.1
 xmltodict==0.13.0
