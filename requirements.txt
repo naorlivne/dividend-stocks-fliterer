@@ -80,6 +80,6 @@ validators==0.34.0
 watchdog==4.0.1
 webencodings==0.5.1
 xmltodict==0.13.0
-yarl==1.9.4
+yarl==1.14.0
 yfinance==0.2.43
 zipp==3.19.2
