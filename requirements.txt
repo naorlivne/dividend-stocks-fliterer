@@ -18,7 +18,7 @@ cssselect==1.2.0
 decorator==5.1.1
 dpath==2.2.0
 entrypoints==0.4
-et-xmlfile==1.1.0
+et-xmlfile==2.0.0
 finviz==1.4.6
 frozendict==2.4.6
 frozenlist==1.4.1
