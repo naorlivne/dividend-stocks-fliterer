@@ -79,7 +79,7 @@ user-agent==0.1.10
 validators==0.34.0
 watchdog==4.0.1
 webencodings==0.5.1
-xmltodict==0.14.1
+xmltodict==0.14.2
 yarl==1.15.2
 yfinance==0.2.48
 zipp==3.20.2
