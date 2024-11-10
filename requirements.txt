@@ -42,7 +42,7 @@ packaging==24.2
 pandas==2.2.3
 parse_it==2024.11.7.10.36
 peewee==3.17.7
-pillow==10.4.0
+pillow==11.0.0
 protobuf==5.28.3
 pyarrow==18.0.0
 pycparser==2.22
