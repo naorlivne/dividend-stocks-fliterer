@@ -34,7 +34,6 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
-          git_service: "github-actions"
 
   build_and_publish_job:
 
