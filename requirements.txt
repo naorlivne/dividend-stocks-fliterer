@@ -43,7 +43,7 @@ pandas==2.2.3
 parse_it==2024.11.20.9.55
 peewee==3.17.8
 pillow==11.0.0
-protobuf==5.28.3
+protobuf==5.29.2
 pyarrow==18.0.0
 pycparser==2.22
 pydeck==0.9.1
