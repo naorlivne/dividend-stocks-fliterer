@@ -81,5 +81,5 @@ watchdog==6.0.0
 webencodings==0.5.1
 xmltodict==0.14.2
 yarl==1.18.3
-yfinance==0.2.50
+yfinance==0.2.54
 zipp==3.21.0
