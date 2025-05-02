@@ -9,7 +9,7 @@ blinker==1.9.0
 cachetools==5.5.0
 certifi==2024.8.30
 cffi==1.17.1
-charset-normalizer==3.4.0
+charset-normalizer==3.4.2
 click==8.1.8
 configobj==5.0.9
 coverage==7.6.12
