@@ -4,12 +4,12 @@ altair==5.5.0
 appdirs==1.4.4
 async-timeout==5.0.1
 attrs==24.2.0
-beautifulsoup4==4.12.3
+beautifulsoup4==4.13.4
 blinker==1.9.0
 cachetools==5.5.0
-certifi==2024.8.30
+certifi==2025.4.26
 cffi==1.17.1
-charset-normalizer==3.4.0
+charset-normalizer==3.4.2
 click==8.1.8
 configobj==5.0.9
 coverage==7.6.12
@@ -42,7 +42,7 @@ packaging==24.2
 pandas==2.2.3
 parse_it==2024.12.3.10.7
 peewee==3.18.1
-pillow==11.0.0
+pillow==11.2.1
 protobuf==5.29.3
 pyarrow==19.0.1
 pycparser==2.22
