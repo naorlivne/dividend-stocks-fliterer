@@ -43,7 +43,7 @@ pandas==2.2.3
 parse_it==2024.12.3.10.7
 peewee==3.18.1
 pillow==11.3.0
-protobuf==5.29.3
+protobuf==5.29.5
 pyarrow==19.0.1
 pycparser==2.22
 pydeck==0.9.1
@@ -57,7 +57,7 @@ pytz==2024.2
 pytz-deprecation-shim==0.1.0.post0
 PyYAML==6.0.2
 referencing==0.35.1
-requests==2.32.3
+requests==2.32.4
 retrying==1.3.4
 rich==13.9.4
 rpds-py==0.23.1
@@ -69,12 +69,12 @@ streamlit==1.42.2
 tenacity==8.4.2
 toml==0.10.2
 toolz==1.0.0
-tornado==6.4.2
+tornado==6.5
 tqdm==4.67.1
 typing_extensions==4.12.2
 tzdata==2025.1
 tzlocal==5.3
-urllib3==2.3.0
+urllib3==2.5.0
 user-agent==0.1.10
 validators==0.34.0
 watchdog==6.0.0
