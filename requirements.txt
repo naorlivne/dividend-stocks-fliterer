@@ -47,7 +47,7 @@ protobuf==5.29.5
 pyarrow==19.0.1
 pycparser==2.22
 pydeck==0.9.1
-Pygments==2.18.0
+Pygments==2.19.2
 pyhcl==0.4.5
 Pympler==1.1
 pyrsistent==0.20.0
